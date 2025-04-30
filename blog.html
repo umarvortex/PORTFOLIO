@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Blog</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="header-wrapper">
+                <div class="logo">
+                    <a href="index.html">Portfolio<span>.</span></a>
+                </div>
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                        <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                        <li class="nav-item"><a href="skills.html" class="nav-link">Skills</a></li>
+                        <li class="nav-item"><a href="projects.html" class="nav-link">Projects</a></li>
+                        <li class="nav-item"><a href="blog.html" class="nav-link active">Blog</a></li>
+                        <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                    </ul>
+                </nav>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav">
+        <ul class="mobile-nav-list">
+            <li class="mobile-nav-item"><a href="index.html" class="mobile-nav-link">Home</a></li>
+            <li class="mobile-nav-item"><a href="about.html" class="mobile-nav-link">About</a></li>
+            <li class="mobile-nav-item"><a href="skills.html" class="mobile-nav-link">Skills</a></li>
+            <li class="mobile-nav-item"><a href="projects.html" class="mobile-nav-link">Projects</a></li>
+            <li class="mobile-nav-item"><a href="blog.html" class="mobile-nav-link active">Blog</a></li>
+            <li class="mobile-nav-item"><a href="contact.html" class="mobile-nav-link">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Blog Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <div class="page-header-content">
+                <h1 class="page-title">My Blog</h1>
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a>
+                    <span>/</span>
+                    <span>Blog</span>
+                </div>
+            </div>
+        </div>
+        <div class="page-header-background">
+            <div class="gradient-blob page-blob-1"></div>
+            <div class="gradient-blob page-blob-2"></div>
+        </div>
+    </section>
+
+    <!-- Blog Search and Categories -->
+    <section class="blog-search-categories" id="blog-search-categories">
+        <div class="container">
+            <div class="blog-search-categories-wrapper">
+                <div class="blog-search">
+                    <form class="search-form">
+                        <input type="text" placeholder="Search articles..." class="search-input">
+                        <button type="submit" class="search-btn">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+                </div>
+                <div class="blog-categories">
+                    <button class="category-btn active" data-category="all">All</button>
+                    <button class="category-btn" data-category="web-development">Web Development</button>
+                    <button class="category-btn" data-category="ui-ux">UI/UX Design</button>
+                    <button class="category-btn" data-category="tech-trends">Tech Trends</button>
+                    <button class="category-btn" data-category="tutorials">Tutorials</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Post -->
+    <section class="featured-post" id="featured-post">
+        <div class="container">
+            <div class="featured-post-wrapper">
+                <div class="featured-post-card">
+                    <div class="featured-post-img">
+                        <img src="images/blog-featured.jpg" alt="Featured Blog Post">
+                    </div>
+                    <div class="featured-post-content">
+                        <div class="featured-post-badge">Featured</div>
+                        <div class="featured-post-meta">
+                            <span class="post-category">Tech Trends</span>
+                            <span class="post-date">April 15, 2025</span>
+                        </div>
+                        <h2 class="featured-post-title">The Future of Web Development in 2025</h2>
+                        <p class="featured-post-excerpt">
+                            Exploring the latest trends and technologies shaping the future of web development. From AI-powered tools to WebAssembly and the evolution of frameworks.
+                        </p>
+                        <a href="#" class="btn btn-primary">Read Article</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Grid -->
+    <section class="blog-grid" id="blog-grid">
+        <div class="container">
+            <div class="blog-grid-wrapper">
+                <!-- Blog Post 1 -->
+                <div class="blog-card" data-category="web-development">
+                    <div class="blog-card-img">
+                        <img src="images/blog-1.jpg" alt="Blog Post 1">
+                    </div>
+                    <div class="blog-card-content">
+                        <div class="blog-card-meta">
+                            <span class="post-category">Web Development</span>
+                            <span class="post-date">March 28, 2025</span>
+                        </div>
+                        <h3 class="blog-card-title">Building Responsive UIs with Modern CSS</h3>
+                        <p class="blog-card-excerpt">
+                            A deep dive into modern CSS techniques for building responsive and adaptive user interfaces.
+                        </p>
+                        <a href="#" class="btn btn-text">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Blog Post 2 -->
+                <div class="blog-card" data-category="ui-ux">
+                    <div class="blog-card-img">
+                        <img src="images/blog-2.jpg" alt="Blog Post 2">
+                    </div>
+                    <div class="blog-card-content">
+                        <div class="blog-card-meta">
+                            <span class="post-category">UI/UX Design</span>
+                            <span class="post-date">March 15, 2025</span>
+                        </div>
+                        <h3 class="blog-card-title">Design Systems: Why They Matter</h3>
+                        <p class="blog-card-excerpt">
+                            Learn how design systems can streamline your workflow and create consistent user experiences.
+                        </p>
+                        <a href="#" class="btn btn-text">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Blog Post 3 -->
+                <div class="blog-card" data-category="tutorials">
+                    <div class="blog-card-img">
+                        <img src="images/blog-3.jpg" alt="Blog Post 3">
+                    </div>
+                    <div class="blog-card-content">
+                        <div class="blog-card-meta">
+                            <span class="post-category">Tutorials</span>
+                            <span class="post-date">February 28, 2025</span>
+                        </div>
+                        <h3 class="blog-card-title">Getting Started with React Hooks</h3>
+                        <p class="blog-card-excerpt">
+                            A comprehensive guide to understanding and implementing React Hooks in your applications.
+                        </p>
+                        <a href="#" class="btn btn-text">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Blog Post 4 -->
+                <div class="blog-card" data-category="tech-trends">
+                    <div class="blog-card-img">
+                        <img src="images/blog-4.jpg" alt="Blog Post 4">
+                    </div>
+                    <div class="blog-card-content">
+                        <div class="blog-card-meta">
+                            <span class="post-category">Tech Trends</span>
+                            <span class="post-date">February 15, 2025</span>
+                        </div>
+                        <h3 class="blog-card-title">AI in Web Development: Practical Applications</h3>
+                        <p class="blog-card-excerpt">
+                            Exploring how artificial intelligence is transforming the web development landscape.
+                        </p>
+                        <a href="#" class="btn btn-text">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Blog Post 5 -->
+                <div class="blog-card" data-category="web-development">
+                    <div class="blog-card-img">
+                        <img src="images/blog-5.jpg" alt="Blog Post 5">
+                    </div>
+                    <div class="blog-card-content">
+                        <div class="blog-card-meta">
+                            <span class="post-category">Web Development</span>
+                            <span class="post-date">January 28, 2025</span>
+                        </div>
+                        <h3 class="blog-card-title">Optimizing Website Performance</h3>
+                        <p class="blog-card-excerpt">
+                            Tips and techniques to improve your website's loading speed and overall performance.
+                        </p>
+                        <a href="#" class="btn btn-text">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Blog Post 6 -->
+                <div class="blog-card" data-category="tutorials">
+                    <div class="blog-card-img">
+                        <img src="images/blog-6.jpg" alt="Blog Post 6">
+                    </div>
+                    <div class="blog-card-content">
+                        <div class="blog-card-meta">
+                            <span class="post-category">Tutorials</span>
+                            <span class="post-date">January 15, 2025</span>
+                        </div>
+                        <h3 class="blog-card-title">Building a REST API with Node.js</h3>
+                        <p class="blog-card-excerpt">
+                            Step-by-step guide to creating a robust REST API using Node.js, Express, and MongoDB.
+                        </p>
+                        <a href="#" class="btn btn-text">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="blog-pagination">
+                <button class="pagination-btn active">1</button>
+                <button class="pagination-btn">2</button>
+                <button class="pagination-btn">3</button>
+                <button class="pagination-btn next">
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+        <div class="blog-grid-background">
+            <div class="gradient-blob blob-15"></div>
+            <div class="gradient-blob blob-16"></div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter" id="newsletter">
+        <div class="container">
+            <div class="newsletter-wrapper">
+                <div class="newsletter-content">
+                    <h2 class="newsletter-title">Subscribe to My Newsletter</h2>
+                    <p class="newsletter-text">
+                        Get notified about new articles, tutorials, and resources straight to your inbox.
+                    </p>
+                    <form class="newsletter-form">
+                        <div class="newsletter-form-group">
+                            <input type="email" placeholder="Enter your email" class="newsletter-input">
+                            <button type="submit" class="newsletter-btn">Subscribe</button>
+                        </div>
+                        <div class="newsletter-privacy">
+                            <small>I respect your privacy. No spam, ever.</small>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact CTA -->
+    <section class="contact-cta" id="contact-cta">
+        <div class="container">
+            <div class="contact-cta-wrapper">
+                <div class="contact-cta-content">
+                    <h2 class="contact-cta-title">Have a topic you'd like me to cover?</h2>
+                    <p class="contact-cta-description">
+                        Feel free to reach out with suggestions for future blog posts or tutorial topics.
+                    </p>
+                    <a href="contact.html" class="btn btn-primary">Contact Me</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-wrapper">
+                <div class="footer-top">
+                    <div class="footer-logo">
+                        <a href="index.html">Portfolio<span>.</span></a>
+                    </div>
+                    <div class="footer-social">
+                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-divider"></div>
+                <div class="footer-bottom">
+                    <div class="footer-copyright">
+                        &copy; <span id="currentYear"></span> Portfolio. All rights reserved.
+                    </div>
+                    <div class="footer-nav">
+                        <a href="index.html" class="footer-nav-link">Home</a>
+                        <a href="about.html" class="footer-nav-link">About</a>
+                        <a href="skills.html" class="footer-nav-link">Skills</a>
+                        <a href="projects.html" class="footer-nav-link">Projects</a>
+                        <a href="blog.html" class="footer-nav-link">Blog</a>
+                        <a href="contact.html" class="footer-nav-link">Contact</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+</body>
+</html> 

@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Projects</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="header-wrapper">
+                <div class="logo">
+                    <a href="index.html">Portfolio<span>.</span></a>
+                </div>
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                        <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                        <li class="nav-item"><a href="skills.html" class="nav-link">Skills</a></li>
+                        <li class="nav-item"><a href="projects.html" class="nav-link active">Projects</a></li>
+                        <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+                        <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                    </ul>
+                </nav>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav">
+        <ul class="mobile-nav-list">
+            <li class="mobile-nav-item"><a href="index.html" class="mobile-nav-link">Home</a></li>
+            <li class="mobile-nav-item"><a href="about.html" class="mobile-nav-link">About</a></li>
+            <li class="mobile-nav-item"><a href="skills.html" class="mobile-nav-link">Skills</a></li>
+            <li class="mobile-nav-item"><a href="projects.html" class="mobile-nav-link active">Projects</a></li>
+            <li class="mobile-nav-item"><a href="blog.html" class="mobile-nav-link">Blog</a></li>
+            <li class="mobile-nav-item"><a href="contact.html" class="mobile-nav-link">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Projects Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <div class="page-header-content">
+                <h1 class="page-title">My Projects</h1>
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a>
+                    <span>/</span>
+                    <span>Projects</span>
+                </div>
+            </div>
+        </div>
+        <div class="page-header-background">
+            <div class="gradient-blob page-blob-1"></div>
+            <div class="gradient-blob page-blob-2"></div>
+        </div>
+    </section>
+
+    <!-- Projects Filter -->
+    <section class="projects-filter" id="projects-filter">
+        <div class="container">
+            <div class="projects-filter-wrapper">
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="web">Web Development</button>
+                    <button class="filter-btn" data-filter="mobile">Mobile Apps</button>
+                    <button class="filter-btn" data-filter="ui">UI/UX Design</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Grid -->
+    <section class="projects-grid" id="projects-grid">
+        <div class="container">
+            <div class="projects-grid-wrapper">
+                <!-- Project Item 1 -->
+                <div class="project-item" data-category="web">
+                    <div class="project-card">
+                        <div class="project-img">
+                            <img src="images/project-1.jpg" alt="E-commerce Platform">
+                            <div class="project-overlay">
+                                <div class="project-actions">
+                                    <a href="#" class="project-action-btn view-project" data-project="project-1">
+                                        <i class="fas fa-eye"></i>
+                                        View Project
+                                    </a>
+                                    <a href="#" class="project-action-btn">
+                                        <i class="fas fa-external-link-alt"></i>
+                                        Live Demo
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-tags">
+                                <span class="project-tag">Web Development</span>
+                                <span class="project-tag">React</span>
+                            </div>
+                            <h3 class="project-title">E-commerce Platform</h3>
+                            <p class="project-description">
+                                A fully-featured e-commerce platform with user authentication, shopping cart, and payment gateway integration.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Item 2 -->
+                <div class="project-item" data-category="mobile">
+                    <div class="project-card">
+                        <div class="project-img">
+                            <img src="images/project-2.jpg" alt="Fitness Tracker">
+                            <div class="project-overlay">
+                                <div class="project-actions">
+                                    <a href="#" class="project-action-btn view-project" data-project="project-2">
+                                        <i class="fas fa-eye"></i>
+                                        View Project
+                                    </a>
+                                    <a href="#" class="project-action-btn">
+                                        <i class="fas fa-external-link-alt"></i>
+                                        Live Demo
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-tags">
+                                <span class="project-tag">Mobile App</span>
+                                <span class="project-tag">React Native</span>
+                            </div>
+                            <h3 class="project-title">Fitness Tracker</h3>
+                            <p class="project-description">
+                                A mobile application that helps users track their fitness progress, nutrition, and workout routines.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Item 3 -->
+                <div class="project-item" data-category="ui">
+                    <div class="project-card">
+                        <div class="project-img">
+                            <img src="images/project-3.jpg" alt="Dashboard UI Design">
+                            <div class="project-overlay">
+                                <div class="project-actions">
+                                    <a href="#" class="project-action-btn view-project" data-project="project-3">
+                                        <i class="fas fa-eye"></i>
+                                        View Project
+                                    </a>
+                                    <a href="#" class="project-action-btn">
+                                        <i class="fas fa-external-link-alt"></i>
+                                        Live Demo
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-tags">
+                                <span class="project-tag">UI/UX Design</span>
+                                <span class="project-tag">Figma</span>
+                            </div>
+                            <h3 class="project-title">Dashboard UI Design</h3>
+                            <p class="project-description">
+                                A modern and intuitive dashboard UI design for a SaaS application with dark and light mode.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Item 4 -->
+                <div class="project-item" data-category="web">
+                    <div class="project-card">
+                        <div class="project-img">
+                            <img src="images/project-4.jpg" alt="Task Management App">
+                            <div class="project-overlay">
+                                <div class="project-actions">
+                                    <a href="#" class="project-action-btn view-project" data-project="project-4">
+                                        <i class="fas fa-eye"></i>
+                                        View Project
+                                    </a>
+                                    <a href="#" class="project-action-btn">
+                                        <i class="fas fa-external-link-alt"></i>
+                                        Live Demo
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-tags">
+                                <span class="project-tag">Web Development</span>
+                                <span class="project-tag">Vue.js</span>
+                            </div>
+                            <h3 class="project-title">Task Management App</h3>
+                            <p class="project-description">
+                                A collaborative task management application with real-time updates, reminders, and progress tracking.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Item 5 -->
+                <div class="project-item" data-category="mobile">
+                    <div class="project-card">
+                        <div class="project-img">
+                            <img src="images/project-5.jpg" alt="Food Delivery App">
+                            <div class="project-overlay">
+                                <div class="project-actions">
+                                    <a href="#" class="project-action-btn view-project" data-project="project-5">
+                                        <i class="fas fa-eye"></i>
+                                        View Project
+                                    </a>
+                                    <a href="#" class="project-action-btn">
+                                        <i class="fas fa-external-link-alt"></i>
+                                        Live Demo
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-tags">
+                                <span class="project-tag">Mobile App</span>
+                                <span class="project-tag">Flutter</span>
+                            </div>
+                            <h3 class="project-title">Food Delivery App</h3>
+                            <p class="project-description">
+                                A food delivery mobile application with restaurant listings, order tracking, and payment processing.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Item 6 -->
+                <div class="project-item" data-category="ui">
+                    <div class="project-card">
+                        <div class="project-img">
+                            <img src="images/project-6.jpg" alt="Travel Booking UI">
+                            <div class="project-overlay">
+                                <div class="project-actions">
+                                    <a href="#" class="project-action-btn view-project" data-project="project-6">
+                                        <i class="fas fa-eye"></i>
+                                        View Project
+                                    </a>
+                                    <a href="#" class="project-action-btn">
+                                        <i class="fas fa-external-link-alt"></i>
+                                        Live Demo
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-tags">
+                                <span class="project-tag">UI/UX Design</span>
+                                <span class="project-tag">Adobe XD</span>
+                            </div>
+                            <h3 class="project-title">Travel Booking UI</h3>
+                            <p class="project-description">
+                                A comprehensive UI design for a travel booking platform with flight, hotel, and car rental services.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="projects-background">
+            <div class="gradient-blob blob-13"></div>
+            <div class="gradient-blob blob-14"></div>
+        </div>
+    </section>
+
+    <!-- Project Lightboxes -->
+    <div class="lightbox-container">
+        <!-- Project 1 Lightbox -->
+        <div class="project-lightbox" id="project-1-lightbox">
+            <div class="lightbox-wrapper">
+                <div class="lightbox-close">
+                    <i class="fas fa-times"></i>
+                </div>
+                <div class="lightbox-content">
+                    <div class="lightbox-header">
+                        <h2 class="lightbox-title">E-commerce Platform</h2>
+                        <div class="lightbox-tags">
+                            <span class="project-tag">Web Development</span>
+                            <span class="project-tag">React</span>
+                            <span class="project-tag">Node.js</span>
+                            <span class="project-tag">MongoDB</span>
+                        </div>
+                    </div>
+                    <div class="lightbox-body">
+                        <div class="lightbox-gallery">
+                            <img src="images/project-1-detail.jpg" alt="E-commerce Platform">
+                        </div>
+                        <div class="lightbox-info">
+                            <div class="lightbox-section">
+                                <h3 class="lightbox-section-title">Project Overview</h3>
+                                <p class="lightbox-text">
+                                    This e-commerce platform was built for a client in the fashion industry. The goal was to create a modern and responsive online store with a seamless shopping experience. The platform includes user authentication, product catalog, shopping cart, wishlist, payment processing, and order management.
+                                </p>
+                            </div>
+                            <div class="lightbox-section">
+                                <h3 class="lightbox-section-title">Technologies Used</h3>
+                                <ul class="lightbox-list">
+                                    <li>React for frontend</li>
+                                    <li>Redux for state management</li>
+                                    <li>Node.js and Express for backend</li>
+                                    <li>MongoDB for database</li>
+                                    <li>Stripe for payment processing</li>
+                                    <li>AWS S3 for image storage</li>
+                                </ul>
+                            </div>
+                            <div class="lightbox-section">
+                                <h3 class="lightbox-section-title">Project Challenges</h3>
+                                <p class="lightbox-text">
+                                    The main challenge was implementing a robust inventory management system that could handle high traffic and prevent overselling. I solved this by implementing a reservation system for items added to cart with a timeout mechanism.
+                                </p>
+                            </div>
+                            <div class="lightbox-actions">
+                                <a href="#" class="btn btn-primary">View Live Demo</a>
+                                <a href="#" class="btn btn-outline">View Source Code</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </div>  
+
+        <!-- More project lightboxes would be added here -->
+    </div>
+
+    <!-- Contact CTA -->
+    <section class="contact-cta" id="contact-cta">
+        <div class="container">
+            <div class="contact-cta-wrapper">
+                <div class="close-icon">
+                    <i class="fas fa-times"></i>
+                </div>
+                <div class="contact-cta-content">
+                    <h2 class="contact-cta-title">Have a project in mind?</h2>
+                    <p class="contact-cta-description">
+                        Let's discuss your project and create something amazing together.
+                    </p>
+                    <a href="contact.html" class="btn btn-primary">Contact Me</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-wrapper">
+                <div class="footer-top">
+                    <div class="footer-logo">
+                        <a href="index.html">Portfolio<span>.</span></a>
+                    </div>
+                    <div class="footer-social">
+                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-divider"></div>
+                <div class="footer-bottom">
+                    <div class="footer-copyright">
+                        &copy; <span id="currentYear"></span> Portfolio. All rights reserved.
+                    </div>
+                    <div class="footer-nav">
+                        <a href="index.html" class="footer-nav-link">Home</a>
+                        <a href="about.html" class="footer-nav-link">About</a>
+                        <a href="skills.html" class="footer-nav-link">Skills</a>
+                        <a href="projects.html" class="footer-nav-link">Projects</a>
+                        <a href="blog.html" class="footer-nav-link">Blog</a>
+                        <a href="contact.html" class="footer-nav-link">Contact</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+</body>
+</html> 

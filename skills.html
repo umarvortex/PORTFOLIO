@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Skills</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="header-wrapper">
+                <div class="logo">
+                    <a href="index.html">Portfolio<span>.</span></a>
+                </div>
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                        <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                        <li class="nav-item"><a href="skills.html" class="nav-link active">Skills</a></li>
+                        <li class="nav-item"><a href="projects.html" class="nav-link">Projects</a></li>
+                        <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+                        <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                    </ul>
+                </nav>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav">
+        <ul class="mobile-nav-list">
+            <li class="mobile-nav-item"><a href="index.html" class="mobile-nav-link">Home</a></li>
+            <li class="mobile-nav-item"><a href="about.html" class="mobile-nav-link">About</a></li>
+            <li class="mobile-nav-item"><a href="skills.html" class="mobile-nav-link active">Skills</a></li>
+            <li class="mobile-nav-item"><a href="projects.html" class="mobile-nav-link">Projects</a></li>
+            <li class="mobile-nav-item"><a href="blog.html" class="mobile-nav-link">Blog</a></li>
+            <li class="mobile-nav-item"><a href="contact.html" class="mobile-nav-link">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Skills Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <div class="page-header-content">
+                <h1 class="page-title">My Skills</h1>
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a>
+                    <span>/</span>
+                    <span>Skills</span>
+                </div>
+            </div>
+        </div>
+        <div class="page-header-background">
+            <div class="gradient-blob page-blob-1"></div>
+            <div class="gradient-blob page-blob-2"></div>
+        </div>
+    </section>
+
+    <!-- Skills Intro -->
+    <section class="skills-intro" id="skills-intro">
+        <div class="container">
+            <div class="skills-intro-wrapper">
+                <div class="section-heading">
+                    <h2 class="section-title">My Expertise</h2>
+                    <p class="section-subtitle">What I bring to the table</p>
+                </div>
+                <div class="skills-intro-content">
+                    <p>
+                        With over 5 years of experience in web development, I've cultivated a diverse set of skills that enable me to build complete, scalable, and user-friendly applications. My expertise spans across front-end and back-end technologies, with a strong focus on creating exceptional user experiences.
+                    </p>
+                    <p>
+                        I'm passionate about learning new technologies and continuously improving my skills. I believe in writing clean, maintainable code and following best practices to create solutions that are not only functional but also sustainable in the long run.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Skills Section -->
+    <section class="technical-skills" id="technical-skills">
+        <div class="container">
+            <div class="technical-skills-wrapper">
+                <div class="section-heading">
+                    <h2 class="section-title">Technical Skills</h2>
+                    <p class="section-subtitle">Languages & frameworks</p>
+                </div>
+                <div class="skills-category">
+                    <h3 class="skills-category-title">Frontend Development</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item" data-skill="HTML5">
+                            <div class="skill-info">
+                                <div class="skill-icon">
+                                    <i class="fab fa-html5"></i>
+                                </div>
+                                <div class="skill-details">
+                                    <h4 class="skill-name">HTML5</h4>
+                                    <div class="skill-level">
+                                        <div class="skill-progress" data-progress="95">
+                                            <div class="skill-progress-bar" style="width: 95%;"></div>
+                                        </div>
+                                        <span class="skill-percentage">95%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-skill="CSS3">
+                            <div class="skill-info">
+                                <div class="skill-icon">
+                                    <i class="fab fa-css3-alt"></i>
+                                </div>
+                                <div class="skill-details">
+                                    <h4 class="skill-name">CSS3</h4>
+                                    <div class="skill-level">
+                                        <div class="skill-progress" data-progress="90">
+                                            <div class="skill-progress-bar" style="width: 90%;"></div>
+                                        </div>
+                                        <span class="skill-percentage">90%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-skill="JavaScript">
+                            <div class="skill-info">
+                                <div class="skill-icon">
+                                    <i class="fab fa-js"></i>
+                                </div>
+                                <div class="skill-details">
+                                    <h4 class="skill-name">JavaScript</h4>
+                                    <div class="skill-level">
+                                        <div class="skill-progress" data-progress="90">
+                                            <div class="skill-progress-bar" style="width: 90%;"></div>
+                                        </div>
+                                        <span class="skill-percentage">90%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-skill="React">
+                            <div class="skill-info">
+                                <div class="skill-icon">
+                                    <i class="fab fa-react"></i>
+                                </div>
+                                <div class="skill-details">
+                                    <h4 class="skill-name">React</h4>
+                                    <div class="skill-level">
+                                        <div class="skill-progress" data-progress="85">
+                                            <div class="skill-progress-bar" style="width: 85%;"></div>
+                                        </div>
+                                        <span class="skill-percentage">85%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skills-category">
+                    <h3 class="skills-category-title">Backend Development</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item" data-skill="Node.js">
+                            <div class="skill-info">
+                                <div class="skill-icon">
+                                    <i class="fab fa-node-js"></i>
+                                </div>
+                                <div class="skill-details">
+                                    <h4 class="skill-name">Node.js</h4>
+                                    <div class="skill-level">
+                                        <div class="skill-progress" data-progress="80">
+                                            <div class="skill-progress-bar" style="width: 80%;"></div>
+                                        </div>
+                                        <span class="skill-percentage">80%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-skill="Express">
+                            <div class="skill-info">
+                                <div class="skill-icon">
+                                    <i class="fas fa-server"></i>
+                                </div>
+                                <div class="skill-details">
+                                    <h4 class="skill-name">Express</h4>
+                                    <div class="skill-level">
+                                        <div class="skill-progress" data-progress="75">
+                                            <div class="skill-progress-bar" style="width: 75%;"></div>
+                                        </div>
+                                        <span class="skill-percentage">75%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-skill="MongoDB">
+                            <div class="skill-info">
+                                <div class="skill-icon">
+                                    <i class="fas fa-database"></i>
+                                </div>
+                                <div class="skill-details">
+                                    <h4 class="skill-name">MongoDB</h4>
+                                    <div class="skill-level">
+                                        <div class="skill-progress" data-progress="70">
+                                            <div class="skill-progress-bar" style="width: 70%;"></div>
+                                        </div>
+                                        <span class="skill-percentage">70%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-skill="SQL">
+                            <div class="skill-info">
+                                <div class="skill-icon">
+                                    <i class="fas fa-table"></i>
+                                </div>
+                                <div class="skill-details">
+                                    <h4 class="skill-name">SQL</h4>
+                                    <div class="skill-level">
+                                        <div class="skill-progress" data-progress="65">
+                                            <div class="skill-progress-bar" style="width: 65%;"></div>
+                                        </div>
+                                        <span class="skill-percentage">65%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skills-category">
+                    <h3 class="skills-category-title">Other Technologies</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item" data-skill="Git">
+                            <div class="skill-info">
+                                <div class="skill-icon">
+                                    <i class="fab fa-git-alt"></i>
+                                </div>
+                                <div class="skill-details">
+                                    <h4 class="skill-name">Git</h4>
+                                    <div class="skill-level">
+                                        <div class="skill-progress" data-progress="85">
+                                            <div class="skill-progress-bar" style="width: 85%;"></div>
+                                        </div>
+                                        <span class="skill-percentage">85%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-skill="Docker">
+                            <div class="skill-info">
+                                <div class="skill-icon">
+                                    <i class="fab fa-docker"></i>
+                                </div>
+                                <div class="skill-details">
+                                    <h4 class="skill-name">Docker</h4>
+                                    <div class="skill-level">
+                                        <div class="skill-progress" data-progress="60">
+                                            <div class="skill-progress-bar" style="width: 60%;"></div>
+                                        </div>
+                                        <span class="skill-percentage">60%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-skill="AWS">
+                            <div class="skill-info">
+                                <div class="skill-icon">
+                                    <i class="fab fa-aws"></i>
+                                </div>
+                                <div class="skill-details">
+                                    <h4 class="skill-name">AWS</h4>
+                                    <div class="skill-level">
+                                        <div class="skill-progress" data-progress="55">
+                                            <div class="skill-progress-bar" style="width: 55%;"></div>
+                                        </div>
+                                        <span class="skill-percentage">55%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-skill="Figma">
+                            <div class="skill-info">
+                                <div class="skill-icon">
+                                    <i class="fab fa-figma"></i>
+                                </div>
+                                <div class="skill-details">
+                                    <h4 class="skill-name">Figma</h4>
+                                    <div class="skill-level">
+                                        <div class="skill-progress" data-progress="70">
+                                            <div class="skill-progress-bar" style="width: 70%;"></div>
+                                        </div>
+                                        <span class="skill-percentage">70%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="technical-skills-background">
+            <div class="gradient-blob blob-9"></div>
+            <div class="gradient-blob blob-10"></div>
+        </div>
+    </section>
+
+    <!-- Soft Skills Section -->
+    <section class="soft-skills" id="soft-skills">
+        <div class="container">
+            <div class="soft-skills-wrapper">
+                <div class="section-heading">
+                    <h2 class="section-title">Soft Skills</h2>
+                    <p class="section-subtitle">Professional attributes</p>
+                </div>
+                <div class="soft-skills-content">
+                    <div class="soft-skills-grid">
+                        <div class="soft-skill-card">
+                            <div class="soft-skill-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h3 class="soft-skill-title">Team Collaboration</h3>
+                            <p class="soft-skill-description">
+                                Effective communication and collaboration in cross-functional teams to achieve project goals.
+                            </p>
+                        </div>
+                        <div class="soft-skill-card">
+                            <div class="soft-skill-icon">
+                                <i class="fas fa-tasks"></i>
+                            </div>
+                            <h3 class="soft-skill-title">Project Management</h3>
+                            <p class="soft-skill-description">
+                                Planning, organizing, and executing projects with attention to detail and timeline management.
+                            </p>
+                        </div>
+                        <div class="soft-skill-card">
+                            <div class="soft-skill-icon">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <h3 class="soft-skill-title">Problem Solving</h3>
+                            <p class="soft-skill-description">
+                                Analytical thinking and creative problem-solving to overcome technical challenges.
+                            </p>
+                        </div>
+                        <div class="soft-skill-card">
+                            <div class="soft-skill-icon">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                            <h3 class="soft-skill-title">Communication</h3>
+                            <p class="soft-skill-description">
+                                Clear and concise communication with clients, stakeholders, and team members.
+                            </p>
+                        </div>
+                        <div class="soft-skill-card">
+                            <div class="soft-skill-icon">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <h3 class="soft-skill-title">Continuous Learning</h3>
+                            <p class="soft-skill-description">
+                                Dedication to ongoing professional development and staying current with industry trends.
+                            </p>
+                        </div>
+                        <div class="soft-skill-card">
+                            <div class="soft-skill-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <h3 class="soft-skill-title">Time Management</h3>
+                            <p class="soft-skill-description">
+                                Effective prioritization and time allocation to meet deadlines and deliver quality work.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools I Use Section -->
+    <section class="tools" id="tools">
+        <div class="container">
+            <div class="tools-wrapper">
+                <div class="section-heading">
+                    <h2 class="section-title">Tools I Use</h2>
+                    <p class="section-subtitle">Software & platforms</p>
+                </div>
+                <div class="tools-grid">
+                    <div class="tool-item">
+                        <div class="tool-icon">
+                            <img src="images/tools/vscode.png" alt="VS Code">
+                        </div>
+                        <h4 class="tool-name">VS Code</h4>
+                    </div>
+                    <div class="tool-item">
+                        <div class="tool-icon">
+                            <img src="images/tools/github.png" alt="GitHub">
+                        </div>
+                        <h4 class="tool-name">GitHub</h4>
+                    </div>
+                    <div class="tool-item">
+                        <div class="tool-icon">
+                            <img src="images/tools/figma.png" alt="Figma">
+                        </div>
+                        <h4 class="tool-name">Figma</h4>
+                    </div>
+                    <div class="tool-item">
+                        <div class="tool-icon">
+                            <img src="images/tools/npm.png" alt="npm">
+                        </div>
+                        <h4 class="tool-name">npm</h4>
+                    </div>
+                    <div class="tool-item">
+                        <div class="tool-icon">
+                            <img src="images/tools/webpack.png" alt="Webpack">
+                        </div>
+                        <h4 class="tool-name">Webpack</h4>
+                    </div>
+                    <div class="tool-item">
+                        <div class="tool-icon">
+                            <img src="images/tools/postman.png" alt="Postman">
+                        </div>
+                        <h4 class="tool-name">Postman</h4>
+                    </div>
+                    <div class="tool-item">
+                        <div class="tool-icon">
+                            <img src="images/tools/notion.png" alt="Notion">
+                        </div>
+                        <h4 class="tool-name">Notion</h4>
+                    </div>
+                    <div class="tool-item">
+                        <div class="tool-icon">
+                            <img src="images/tools/slack.png" alt="Slack">
+                        </div>
+                        <h4 class="tool-name">Slack</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tools-background">
+            <div class="gradient-blob blob-11"></div>
+            <div class="gradient-blob blob-12"></div>
+        </div>
+    </section>
+
+    <!-- Contact CTA -->
+    <section class="contact-cta" id="contact-cta">
+        <div class="container">
+            <div class="contact-cta-wrapper">
+                <div class="contact-cta-content">
+                    <h2 class="contact-cta-title">Want to work together?</h2>
+                    <p class="contact-cta-description">
+                        I'm always open to discussing new projects, creative ideas or opportunities to be part of your vision.
+                    </p>
+                    <a href="contact.html" class="btn btn-primary">Contact Me</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-wrapper">
+                <div class="footer-top">
+                    <div class="footer-logo">
+                        <a href="index.html">Portfolio<span>.</span></a>
+                    </div>
+                    <div class="footer-social">
+                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-divider"></div>
+                <div class="footer-bottom">
+                    <div class="footer-copyright">
+                        &copy; <span id="currentYear"></span> Portfolio. All rights reserved.
+                    </div>
+                    <div class="footer-nav">
+                        <a href="index.html" class="footer-nav-link">Home</a>
+                        <a href="about.html" class="footer-nav-link">About</a>
+                        <a href="skills.html" class="footer-nav-link">Skills</a>
+                        <a href="projects.html" class="footer-nav-link">Projects</a>
+                        <a href="blog.html" class="footer-nav-link">Blog</a>
+                        <a href="contact.html" class="footer-nav-link">Contact</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+</body>
+</html> 
