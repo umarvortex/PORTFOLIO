@@ -707,6 +707,21 @@
     transition: opacity var(--transition-fast);
 }
 
+.project-content {
+    padding: var(--space-xl);
+    background-color: var(--bg-card);
+    position: relative;  /* Add this */
+    z-index: 1;         /* Add this */
+}
+
+.project-description {
+    color: var(--text-secondary);
+    margin-bottom: var(--space-md);
+    position: relative;  /* Add this */
+    z-index: 1;         /* Add this */
+}
+
+
 .project-card:hover .project-overlay {
     opacity: 1;
 }
