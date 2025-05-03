@@ -16,6 +16,13 @@ document.addEventListener('DOMContentLoaded', function() {
     initContactForm();
     initLightbox();
     initTimelineTabs();
+    initBlogPagination();
+    
+    // Set all lightboxes to display: none initially
+    const allLightboxes = document.querySelectorAll('.project-lightbox');
+    allLightboxes.forEach(box => {
+        box.style.display = 'none';
+    });
 });
 
 // Preloader
@@ -335,6 +342,12 @@ function initLightbox() {
     const viewProjectButtons = document.querySelectorAll('.view-project');
     if (viewProjectButtons.length === 0) return;
 
+    // Set all lightboxes to display: none initially
+    const allLightboxes = document.querySelectorAll('.project-lightbox');
+    allLightboxes.forEach(box => {
+        box.style.display = 'none';
+    });
+
     viewProjectButtons.forEach(button => {
         button.addEventListener('click', function(e) {
             e.preventDefault();
@@ -342,20 +355,65 @@ function initLightbox() {
             const lightbox = document.getElementById(`${projectId}-lightbox`);
             
             if (lightbox) {
-                lightbox.classList.add('active');
-                document.body.classList.add('no-scroll');
+                // Smoothly display the lightbox
+                lightbox.style.display = 'flex';
+                setTimeout(() => {
+                    lightbox.classList.add('active');
+                    document.body.classList.add('no-scroll');
+                }, 10);
+                
+                // Make the lightbox container accessible
+                const lightboxContainer = document.querySelector('.lightbox-container');
+                if (lightboxContainer) {
+                    lightboxContainer.style.pointerEvents = 'auto';
+                }
+                
+                // Scroll lightbox content to top
+                const lightboxContent = lightbox.querySelector('.lightbox-content');
+                if (lightboxContent) {
+                    lightboxContent.scrollTop = 0;
+                }
+                
+                // Add keyboard navigation for closing with Escape key
+                document.addEventListener('keydown', handleEscKey);
             }
         });
     });
+    
+    // Function to handle Escape key
+    function handleEscKey(e) {
+        if (e.key === 'Escape') {
+            closeLightbox();
+        }
+    }
+    
+    // Function to close lightbox
+    function closeLightbox() {
+        const activeLightbox = document.querySelector('.project-lightbox.active');
+        if (activeLightbox) {
+            activeLightbox.classList.remove('active');
+            document.body.classList.remove('no-scroll');
+            
+            // Make the lightbox container inaccessible again
+            const lightboxContainer = document.querySelector('.lightbox-container');
+            if (lightboxContainer) {
+                lightboxContainer.style.pointerEvents = 'none';
+            }
+            
+            // Remove keyboard event listener
+            document.removeEventListener('keydown', handleEscKey);
+            
+            // Hide lightbox after transition
+            setTimeout(() => {
+                activeLightbox.style.display = 'none';
+            }, 300);
+        }
+    }
 
     // Close lightbox when close button is clicked
     const lightboxCloseButtons = document.querySelectorAll('.lightbox-close');
     lightboxCloseButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const lightbox = this.closest('.project-lightbox');
-            lightbox.classList.remove('active');
-            document.body.classList.remove('no-scroll');
-        });
+        button.addEventListener('click', closeLightbox);
     });
 
     // Close lightbox when clicking outside content
@@ -363,8 +421,7 @@ function initLightbox() {
     lightboxes.forEach(lightbox => {
         lightbox.addEventListener('click', function(e) {
             if (e.target === this) {
-                this.classList.remove('active');
-                document.body.classList.remove('no-scroll');
+                closeLightbox();
             }
         });
     });
@@ -415,4 +472,110 @@ window.addEventListener('scroll', function() {
             element.classList.add('animated');
         }
     });
-}); 
+});
+
+// Blog Pagination
+function initBlogPagination() {
+    const paginationBtns = document.querySelectorAll('.pagination-btn');
+    const blogCards = document.querySelectorAll('.blog-card');
+    if (paginationBtns.length === 0 || blogCards.length === 0) return;
+    
+    // Number of blog posts per page
+    const postsPerPage = 6;
+    
+    // Total number of pages
+    const totalPages = Math.ceil(blogCards.length / postsPerPage);
+    
+    // Current active page
+    let currentPage = 1;
+    
+    // Handle initial load animation
+    blogCards.forEach((card, index) => {
+        if (index < postsPerPage) {
+            setTimeout(() => {
+                card.classList.add('animated');
+            }, index * 100);
+        }
+    });
+    
+    // Function to show blog posts for the current page
+    function showPosts(page) {
+        // Reset animations
+        blogCards.forEach(card => {
+            card.classList.remove('animated');
+            card.style.display = 'none';
+        });
+        
+        // Calculate start and end indices
+        const startIndex = (page - 1) * postsPerPage;
+        const endIndex = Math.min(startIndex + postsPerPage, blogCards.length);
+        
+        // Show blog posts for the current page
+        for (let i = startIndex; i < endIndex; i++) {
+            if (blogCards[i]) {
+                blogCards[i].style.display = 'block';
+                
+                // Add animation with delay based on position
+                setTimeout(() => {
+                    blogCards[i].classList.add('animated');
+                }, (i - startIndex) * 100);
+            }
+        }
+        
+        // Update active pagination button
+        paginationBtns.forEach(btn => {
+            btn.classList.remove('active');
+        });
+        
+        // Add active class to current page button (if it's a number button)
+        paginationBtns.forEach(btn => {
+            if (btn.textContent.trim() === page.toString()) {
+                btn.classList.add('active');
+            }
+        });
+        
+        // Scroll to the top of the blog grid with slight offset
+        const blogGrid = document.getElementById('blog-grid');
+        if (blogGrid) {
+            const scrollOptions = {
+                behavior: 'smooth',
+                block: 'start',
+                inline: 'nearest'
+            };
+            setTimeout(() => {
+                blogGrid.scrollIntoView(scrollOptions);
+            }, 100);
+        }
+        
+        // Update current page
+        currentPage = page;
+    }
+    
+    // Add click event listeners to pagination buttons
+    paginationBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            // If it's a number button
+            if (!this.classList.contains('next')) {
+                const pageNum = parseInt(this.textContent);
+                if (pageNum !== currentPage) {
+                    showPosts(pageNum);
+                }
+            } 
+            // If it's the next button
+            else {
+                if (currentPage < totalPages) {
+                    showPosts(currentPage + 1);
+                }
+            }
+        });
+    });
+    
+    // Initialize with first page blogs visible
+    blogCards.forEach((card, index) => {
+        if (index < postsPerPage) {
+            card.style.display = 'block';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+} 
