@@ -986,7 +986,11 @@
     color: var(--text-secondary);
     margin-bottom: var(--space-md);
     line-height: 1.6;
-    text-align: justify;
+    text-align: left;
+   word-spacing: normal;
+   letter-spacing: normal;
+   white-space: normal;
+   text-indent: 0;
 }
 
 .lightbox-list {
