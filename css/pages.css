@@ -6,6 +6,18 @@
     overflow: hidden;
 }
 
+.lightbox-text p {
+    color: var(--text-secondary);
+    margin-bottom: var(--space-md);
+    line-height: 1.6;
+    text-align: left;
+   word-spacing: normal;
+   letter-spacing: normal;
+   white-space: normal;
+   text-indent: 0;
+}
+
+
 .page-title {
     font-size: var(--font-size-4xl);
     margin-bottom: var(--space-md);
