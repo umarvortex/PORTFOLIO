@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Getting Started with React Hooks | Portfolio</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/pages.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Additional Blog Post Styles */
+        .blog-post-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 1rem;
+        }
+        
+        .blog-post-header {
+            margin-bottom: 2rem;
+        }
+        
+        .blog-post-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        
+        .blog-post-title {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+        }
+        
+        .blog-post-image {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .blog-post-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-medium);
+        }
+        
+        .blog-post-content p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .blog-post-content h2 {
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem;
+            color: var(--text-dark);
+        }
+        
+        .blog-post-content h3 {
+            font-size: 1.5rem;
+            margin: 1.5rem 0 1rem;
+            color: var(--text-dark);
+        }
+        
+        .blog-post-content ul, .blog-post-content ol {
+            margin: 1rem 0 1.5rem 2rem;
+        }
+        
+        .blog-post-content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .blog-post-content blockquote {
+            border-left: 4px solid var(--primary-color);
+            padding-left: 1.5rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: var(--text-medium);
+        }
+        
+        .blog-post-content code {
+            background: #f4f4f4;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.9rem;
+        }
+        
+        .blog-post-content pre {
+            background: #f4f4f4;
+            padding: 1rem;
+            border-radius: 4px;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+        }
+        
+        .blog-post-content pre code {
+            background: none;
+            padding: 0;
+        }
+        
+        .blog-post-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 2rem 0;
+        }
+        
+        .blog-post-tag {
+            background: var(--bg-light);
+            color: var(--text-medium);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .blog-post-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin: 3rem 0;
+            padding: 1.5rem 0;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .blog-post-nav-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-medium);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .blog-post-nav-link:hover {
+            color: var(--primary-color);
+        }
+        
+        .blog-post-share {
+            margin: 2rem 0;
+        }
+        
+        .blog-post-share-title {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            color: var(--text-dark);
+        }
+        
+        .blog-post-share-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .blog-post-share-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--bg-light);
+            color: var(--text-medium);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .blog-post-share-link:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .related-posts {
+            margin: 4rem 0;
+        }
+        
+        .related-posts-title {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            color: var(--text-dark);
+        }
+        
+        .related-posts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .blog-post-title {
+                font-size: 2rem;
+            }
+            
+            .blog-post-content {
+                font-size: 1rem;
+            }
+            
+            .blog-post-navigation {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="header-wrapper">
+                <div class="logo">
+                    <a href="../index.html">Portfolio<span>.</span></a>
+                </div>
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li class="nav-item"><a href="../index.html" class="nav-link">Home</a></li>
+                        <li class="nav-item"><a href="../about.html" class="nav-link">About</a></li>
+                        <li class="nav-item"><a href="../skills.html" class="nav-link">Skills</a></li>
+                        <li class="nav-item"><a href="../projects.html" class="nav-link">Projects</a></li>
+                        <li class="nav-item"><a href="../blog.html" class="nav-link active">Blog</a></li>
+                        <li class="nav-item"><a href="../contact.html" class="nav-link">Contact</a></li>
+                    </ul>
+                </nav>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav">
+        <ul class="mobile-nav-list">
+            <li class="mobile-nav-item"><a href="../index.html" class="mobile-nav-link">Home</a></li>
+            <li class="mobile-nav-item"><a href="../about.html" class="mobile-nav-link">About</a></li>
+            <li class="mobile-nav-item"><a href="../skills.html" class="mobile-nav-link">Skills</a></li>
+            <li class="mobile-nav-item"><a href="../projects.html" class="mobile-nav-link">Projects</a></li>
+            <li class="mobile-nav-item"><a href="../blog.html" class="mobile-nav-link active">Blog</a></li>
+            <li class="mobile-nav-item"><a href="../contact.html" class="mobile-nav-link">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Blog Post Header -->
+    <section class="page-header">
+        <div class="container">
+            <div class="page-header-content">
+                <h1 class="page-title">Blog</h1>
+                <div class="breadcrumb">
+                    <a href="../index.html">Home</a>
+                    <span>/</span>
+                    <a href="../blog.html">Blog</a>
+                    <span>/</span>
+                    <span>Getting Started with React Hooks</span>
+                </div>
+            </div>
+        </div>
+        <div class="page-header-background">
+            <div class="gradient-blob page-blob-1"></div>
+            <div class="gradient-blob page-blob-2"></div>
+        </div>
+    </section>
+
+    <!-- Blog Post Content -->
+    <section class="blog-post">
+        <div class="container">
+            <div class="blog-post-container">
+                <div class="blog-post-header">
+                    <div class="blog-post-meta">
+                        <span class="post-category">Tutorials</span>
+                        <span class="post-date">February 28, 2025</span>
+                    </div>
+                    <h1 class="blog-post-title">Getting Started with React Hooks</h1>
+                </div>
+                
+                <img src="../images/blog-3.jpg" alt="Getting Started with React Hooks" class="blog-post-image">
+                
+                <div class="blog-post-content">
+                    <p>
+                        React Hooks were introduced in React 16.8 as a revolutionary way to use state and other React features without writing a class component. They provide a more direct API to React concepts you already know and love: props, state, context, refs, and lifecycle events. In this comprehensive guide, we'll explore how to use React Hooks effectively to write cleaner, more concise React code.
+                    </p>
+                    
+                    <h2>Why Hooks Matter</h2>
+                    
+                    <p>
+                        Before hooks, React developers faced several challenges when working with class components:
+                    </p>
+                    
+                    <ul>
+                        <li>Complex components became unwieldy and difficult to understand</li>
+                        <li>Stateful logic was difficult to reuse between components</li>
+                        <li>The <code>this</code> keyword was a frequent source of confusion</li>
+                        <li>Classes don't minify well and make hot reloading less reliable</li>
+                    </ul>
+                    
+                    <p>
+                        Hooks were designed to address these issues by allowing you to use state and other React features without classes. They enable you to extract stateful logic from a component so it can be tested and reused independently.
+                    </p>
+                    
+                    <h2>The Core Hooks</h2>
+                    
+                    <h3>useState: Managing State</h3>
+                    
+                    <p>
+                        The <code>useState</code> hook allows you to add state to functional components. It returns a pair: the current state value and a function to update it.
+                    </p>
+                    
+                    <pre><code>import React, { useState } from 'react';
+
+function Counter() {
+  const [count, setCount] = useState(0);
+  
+  return (
+    &lt;div&gt;
+      &lt;p&gt;You clicked {count} times&lt;/p&gt;
+      &lt;button onClick={() => setCount(count + 1)}&gt;
+        Click me
+      &lt;/button&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+                    
+                    <p>
+                        Here, <code>useState(0)</code> returns a pair of values: the current state (<code>count</code>) initialized to 0, and a function (<code>setCount</code>) that updates the state. When the button is clicked, <code>setCount</code> is called, which triggers a re-render with the new value.
+                    </p>
+                    
+                    <h3>useEffect: Performing Side Effects</h3>
+                    
+                    <p>
+                        The <code>useEffect</code> hook lets you perform side effects in functional components. It serves the same purpose as <code>componentDidMount</code>, <code>componentDidUpdate</code>, and <code>componentWillUnmount</code> in React classes, but unified into a single API.
+                    </p>
+                    
+                    <pre><code>import React, { useState, useEffect } from 'react';
+
+function DocumentTitle({ title }) {
+  useEffect(() => {
+    document.title = title;
+  }, [title]); // Only re-run the effect if title changes
+  
+  return &lt;h1&gt;{title}&lt;/h1&gt;;
+}</code></pre>
+                    
+                    <p>
+                        In this example, the effect runs after render and after any updates where the <code>title</code> prop has changed. The second parameter, <code>[title]</code>, is the dependency array that tells React when to re-run the effect.
+                    </p>
+                    
+                    <h3>useContext: Consuming Context</h3>
+                    
+                    <p>
+                        The <code>useContext</code> hook provides a more elegant way to consume context in functional components without nested render props or higher-order components.
+                    </p>
+                    
+                    <pre><code>import React, { useContext } from 'react';
+import { ThemeContext } from './theme-context';
+
+function ThemedButton() {
+  const theme = useContext(ThemeContext);
+  
+  return (
+    &lt;button style={{ background: theme.background, color: theme.foreground }}&gt;
+      Styled by theme context!
+    &lt;/button&gt;
+  );
+}</code></pre>
+                    
+                    <p>
+                        Here, <code>useContext(ThemeContext)</code> returns the current context value of <code>ThemeContext</code>. It's equivalent to <code>static contextType = ThemeContext</code> in a class or <code>&lt;ThemeContext.Consumer&gt;</code>.
+                    </p>
+                    
+                    <h2>Additional Hooks</h2>
+                    
+                    <h3>useReducer: Complex State Logic</h3>
+                    
+                    <p>
+                        For more complex state logic, <code>useReducer</code> provides an alternative to <code>useState</code> that's especially useful when the next state depends on the previous one or when state transitions are complex.
+                    </p>
+                    
+                    <pre><code>import React, { useReducer } from 'react';
+
+function reducer(state, action) {
+  switch (action.type) {
+    case 'increment':
+      return { count: state.count + 1 };
+    case 'decrement':
+      return { count: state.count - 1 };
+    default:
+      throw new Error();
+  }
+}
+
+function Counter() {
+  const [state, dispatch] = useReducer(reducer, { count: 0 });
+  
+  return (
+    &lt;div&gt;
+      Count: {state.count}
+      &lt;button onClick={() => dispatch({ type: 'increment' })}&gt;+&lt;/button&gt;
+      &lt;button onClick={() => dispatch({ type: 'decrement' })}&gt;-&lt;/button&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+                    
+                    <h3>useCallback and useMemo: Performance Optimization</h3>
+                    
+                    <p>
+                        <code>useCallback</code> returns a memoized callback that only changes if one of the dependencies has changed. This is useful when passing callbacks to optimized child components that rely on reference equality to prevent unnecessary renders.
+                    </p>
+                    
+                    <pre><code>import React, { useState, useCallback } from 'react';
+
+function ParentComponent() {
+  const [count, setCount] = useState(0);
+  
+  // This function is recreated only when count changes
+  const handleClick = useCallback(() => {
+    console.log(`Button clicked, count: ${count}`);
+  }, [count]);
+  
+  return &lt;ChildComponent onClick={handleClick} /&gt;;
+}</code></pre>
+                    
+                    <p>
+                        Similarly, <code>useMemo</code> returns a memoized value that only recomputes when one of its dependencies changes, which can help avoid expensive calculations on every render.
+                    </p>
+                    
+                    <pre><code>import React, { useMemo } from 'react';
+
+function ExpensiveComponent({ data }) {
+  // This computation will only run when data changes
+  const processedData = useMemo(() => {
+    return data.map(item => /* expensive operation */);
+  }, [data]);
+  
+  return &lt;div&gt;{processedData}&lt;/div&gt;;
+}</code></pre>
+                    
+                    <h3>useRef: Accessing DOM Elements</h3>
+                    
+                    <p>
+                        <code>useRef</code> returns a mutable ref object whose <code>.current</code> property is initialized to the passed argument. It's commonly used to access a DOM element directly.
+                    </p>
+                    
+                    <pre><code>import React, { useRef, useEffect } from 'react';
+
+function TextInputWithFocus() {
+  const inputRef = useRef(null);
+  
+  useEffect(() => {
+    // Focus the input element after mounting
+    inputRef.current.focus();
+  }, []);
+  
+  return &lt;input ref={inputRef} type="text" /&gt;;
+}</code></pre>
+                    
+                    <h2>Custom Hooks: Creating Reusable Logic</h2>
+                    
+                    <p>
+                        One of the most powerful features of hooks is the ability to create custom hooks that encapsulate reusable logic. Custom hooks are JavaScript functions whose name starts with "use" and that may call other hooks.
+                    </p>
+                    
+                    <pre><code>import { useState, useEffect } from 'react';
+
+function useWindowWidth() {
+  const [width, setWidth] = useState(window.innerWidth);
+  
+  useEffect(() => {
+    const handleResize = () => setWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+  
+  return width;
+}
+
+// Usage in a component
+function ResponsiveComponent() {
+  const width = useWindowWidth();
+  return &lt;div&gt;Window width: {width}px&lt;/div&gt;;
+}</code></pre>
+                    
+                    <p>
+                        This custom <code>useWindowWidth</code> hook encapsulates all the logic for tracking the window width, including the setup and cleanup of the event listener, and makes it reusable across multiple components.
+                    </p>
+                    
+                    <h2>Rules of Hooks</h2>
+                    
+                    <p>
+                        To ensure hooks work correctly, React enforces two important rules:
+                    </p>
+                    
+                    <ol>
+                        <li><strong>Only Call Hooks at the Top Level</strong> - Don't call hooks inside loops, conditions, or nested functions. This ensures hooks are called in the same order each time a component renders.</li>
+                        <li><strong>Only Call Hooks from React Functions</strong> - Call hooks from React functional components or from custom hooks, not from regular JavaScript functions.</li>
+                    </ol>
+                    
+                    <p>
+                        The ESLint plugin <code>eslint-plugin-react-hooks</code> can help enforce these rules automatically in your projects.
+                    </p>
+                    
+                    <blockquote>
+                        "Hooks are a way to reuse stateful logic, not state itself. Each call to a hook has a completely isolated state."<br>— React Documentation
+                    </blockquote>
+                    
+                    <h2>Migrating from Classes to Hooks</h2>
+                    
+                    <p>
+                        If you're working with an existing codebase that uses class components, you don't need to rewrite everything at once. React supports both class and function components with hooks, allowing for gradual migration:
+                    </p>
+                    
+                    <ol>
+                        <li>Start by converting simpler, leaf components first</li>
+                        <li>Use hooks for new components</li>
+                        <li>Refactor class components gradually as needed</li>
+                    </ol>
+                    
+                    <h2>Conclusion</h2>
+                    
+                    <p>
+                        React Hooks represent a paradigm shift in how we write React components. They allow for more composable, reusable code with less boilerplate, making it easier to understand and maintain complex components. By extracting stateful logic into hooks, we can create cleaner component hierarchies where the UI and behavior are more clearly separated.
+                    </p>
+                    
+                    <p>
+                        As you become more comfortable with hooks, you'll likely find that they make your React code more readable, testable, and maintainable. Whether you're starting a new project or maintaining an existing one, hooks provide a powerful toolkit for building React applications in a more functional way.
+                    </p>
+                </div>
+                
+                <div class="blog-post-tags">
+                    <span class="blog-post-tag">React</span>
+                    <span class="blog-post-tag">JavaScript</span>
+                    <span class="blog-post-tag">Hooks</span>
+                    <span class="blog-post-tag">Web Development</span>
+                    <span class="blog-post-tag">Tutorial</span>
+                </div>
+                
+                <div class="blog-post-navigation">
+                    <a href="design-systems.html" class="blog-post-nav-link">
+                        <i class="fas fa-arrow-left"></i>
+                        Previous Post: Design Systems: Why They Matter
+                    </a>
+                    <a href="ai-web-development.html" class="blog-post-nav-link">
+                        Next Post: AI in Web Development: Practical Applications
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <div class="blog-post-share">
+                    <h3 class="blog-post-share-title">Share This Post</h3>
+                    <div class="blog-post-share-links">
+                        <a href="#" class="blog-post-share-link">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="blog-post-share-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="blog-post-share-link">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="blog-post-share-link">
+                            <i class="fab fa-pinterest"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Posts -->
+    <section class="related-posts">
+        <div class="container">
+            <h2 class="related-posts-title">Related Posts</h2>
+            <div class="related-posts-grid">
+                <!-- Related Post 1 -->
+                <div class="blog-card">
+                    <div class="blog-card-img">
+                        <img src="../images/blog-6.jpg" alt="Custom React Hooks">
+                    </div>
+                    <div class="blog-card-content">
+                        <div class="blog-card-meta">
+                            <span class="post-category">Tutorials</span>
+                            <span class="post-date">October 15, 2024</span>
+                        </div>
+                        <h3 class="blog-card-title">Creating Custom Hooks in React</h3>
+                        <p class="blog-card-excerpt">
+                            Learn how to build and use custom hooks to share logic across your React components.
+                        </p>
+                        <a href="custom-react-hooks.html" class="btn btn-text">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Related Post 2 -->
+                <div class="blog-card">
+                    <div class="blog-card-img">
+                        <img src="../images/blog-3.jpg" alt="TypeScript for JavaScript Developers">
+                    </div>
+                    <div class="blog-card-content">
+                        <div class="blog-card-meta">
+                            <span class="post-category">Tutorials</span>
+                            <span class="post-date">December 28, 2024</span>
+                        </div>
+                        <h3 class="blog-card-title">TypeScript for JavaScript Developers</h3>
+                        <p class="blog-card-excerpt">
+                            A beginner-friendly introduction to TypeScript with practical examples for JavaScript developers.
+                        </p>
+                        <a href="typescript-for-javascript.html" class="btn btn-text">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-wrapper">
+                <div class="footer-top">
+                    <div class="footer-logo">
+                        <a href="../index.html">Portfolio<span>.</span></a>
+                    </div>
+                    <div class="footer-social">
+                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-divider"></div>
+                <div class="footer-bottom">
+                    <div class="footer-copyright">
+                        &copy; <span id="currentYear"></span> Portfolio. All rights reserved.
+                    </div>
+                    <div class="footer-nav">
+                        <a href="../index.html" class="footer-nav-link">Home</a>
+                        <a href="../about.html" class="footer-nav-link">About</a>
+                        <a href="../skills.html" class="footer-nav-link">Skills</a>
+                        <a href="../projects.html" class="footer-nav-link">Projects</a>
+                        <a href="../blog.html" class="footer-nav-link">Blog</a>
+                        <a href="../contact.html" class="footer-nav-link">Contact</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../js/main.js"></script>
+</body>
+</html> 
