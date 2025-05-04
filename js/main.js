@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initCurrentYear();
     initProjectFilter();
     initBlogFilter();
+    initBlogSearch();
     initFaqAccordion();
     initContactForm();
     initLightbox();
@@ -277,6 +278,107 @@ function initBlogFilter() {
             });
         });
     });
+}
+
+// Blog Search
+function initBlogSearch() {
+    const searchInput = document.querySelector('.search-input');
+    const blogCards = document.querySelectorAll('.blog-card');
+    const featuredPost = document.querySelector('.featured-post-card');
+    
+    if (!searchInput || blogCards.length === 0) return;
+    
+    // Add keywords as data attributes to each blog post (this can also be done directly in HTML)
+    blogCards.forEach(card => {
+        const title = card.querySelector('.blog-card-title')?.textContent || '';
+        const excerpt = card.querySelector('.blog-card-excerpt')?.textContent || '';
+        const category = card.querySelector('.post-category')?.textContent || '';
+        
+        // Combine title, excerpt and category as keywords
+        const keywords = `${title} ${excerpt} ${category}`.toLowerCase();
+        card.setAttribute('data-keywords', keywords);
+    });
+    
+    // Also add keywords to featured post if it exists
+    if (featuredPost) {
+        const featuredTitle = featuredPost.querySelector('.featured-post-title')?.textContent || '';
+        const featuredExcerpt = featuredPost.querySelector('.featured-post-excerpt')?.textContent || '';
+        const featuredCategory = featuredPost.querySelector('.post-category')?.textContent || '';
+        
+        const featuredKeywords = `${featuredTitle} ${featuredExcerpt} ${featuredCategory}`.toLowerCase();
+        featuredPost.setAttribute('data-keywords', featuredKeywords);
+    }
+    
+    // Function to filter blog posts based on search input
+    function filterBlogPosts() {
+        const searchTerm = searchInput.value.trim().toLowerCase();
+        
+        // If search term is empty, show all posts
+        if (searchTerm === '') {
+            blogCards.forEach(card => {
+                card.style.display = '';
+                card.style.opacity = '1';
+                card.style.transform = 'scale(1)';
+            });
+            
+            if (featuredPost) {
+                featuredPost.style.display = '';
+                featuredPost.style.opacity = '1';
+                featuredPost.style.transform = 'scale(1)';
+            }
+            return;
+        }
+        
+        // Filter blog cards
+        blogCards.forEach(card => {
+            const keywords = card.getAttribute('data-keywords');
+            
+            if (keywords.includes(searchTerm)) {
+                card.style.display = '';
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'scale(1)';
+                }, 10);
+            } else {
+                card.style.opacity = '0';
+                card.style.transform = 'scale(0.8)';
+                setTimeout(() => {
+                    card.style.display = 'none';
+                }, 300);
+            }
+        });
+        
+        // Filter featured post
+        if (featuredPost) {
+            const featuredKeywords = featuredPost.getAttribute('data-keywords');
+            
+            if (featuredKeywords.includes(searchTerm)) {
+                featuredPost.style.display = '';
+                setTimeout(() => {
+                    featuredPost.style.opacity = '1';
+                    featuredPost.style.transform = 'scale(1)';
+                }, 10);
+            } else {
+                featuredPost.style.opacity = '0';
+                featuredPost.style.transform = 'scale(0.8)';
+                setTimeout(() => {
+                    featuredPost.style.display = 'none';
+                }, 300);
+            }
+        }
+    }
+    
+    // Add event listener for real-time filtering
+    searchInput.addEventListener('input', filterBlogPosts);
+    
+    // Prevent form submission
+    const searchForm = document.querySelector('.search-form');
+    if (searchForm) {
+        searchForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            filterBlogPosts();
+        });
+    }
 }
 
 // FAQ Accordion
