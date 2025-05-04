@@ -1,0 +1,24 @@
+This directory should contain the following images:
+
+1. Profile and hero images:
+   - hero.png (main hero image)
+   - profile.jpg (profile picture for About page)
+
+2. Project images:
+   - project-1.jpg, project-2.jpg, etc. (thumbnails for project cards)
+   - project-1-detail.jpg, project-2-detail.jpg, etc. (larger images for project details)
+
+3. Blog images:
+   - blog-1.jpg, blog-2.jpg, etc. (thumbnails for blog posts)
+   - blog-featured.jpg (larger featured blog post image)
+
+4. Testimonial images:
+   - testimonial-1.jpg, testimonial-2.jpg (client photos)
+
+5. Tool icons:
+   - tools/vscode.png, tools/github.png, etc. (tool icons for Skills page)
+
+6. Illustration:
+   - contact-illustration.svg (illustration for contact page)
+
+You can replace these placeholder images with your own custom images. 
