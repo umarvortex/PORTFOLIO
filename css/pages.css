@@ -6,18 +6,6 @@
     overflow: hidden;
 }
 
-.lightbox-section p {
-    color: var(--text-secondary);
-    margin-bottom: var(--space-md);
-    line-height: 1.6;
-    text-align: left;
-   word-spacing: normal;
-   letter-spacing: normal;
-   white-space: normal;
-   text-indent: 0;
-}
-
-
 .page-title {
     font-size: var(--font-size-4xl);
     margin-bottom: var(--space-md);
@@ -638,8 +626,8 @@
 }
 
 .tool-icon img {
-    width: 60px;
-    height: 60px;
+    width: 45px;
+    height: 45px;
     object-fit: contain;
 }
 
@@ -683,6 +671,7 @@
     padding: var(--space-2xl) 0 var(--space-4xl);
     position: relative;
     overflow: hidden;
+    align-items: center;
 }
 
 .projects-grid-wrapper {
@@ -690,7 +679,7 @@
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     gap: var(--space-2xl);
     padding: var(--space-lg) 0; 
-    margin: 0 8px; 
+    margin: 0 7px; 
     max-width: calc(100% - 16px);
 }
 
@@ -699,8 +688,6 @@
     margin-bottom: var(--space-xl);
     width: 100%;
 }
-
-
 
 .project-card {
     height: 100%;
@@ -997,12 +984,8 @@
 .lightbox-text {
     color: var(--text-secondary);
     margin-bottom: var(--space-md);
-    line-height: 1.6;
+    line-height: 1.4;
     text-align: left;
-   word-spacing: normal;
-   letter-spacing: normal;
-   white-space: normal;
-   text-indent: 0;
 }
 
 .lightbox-list {
