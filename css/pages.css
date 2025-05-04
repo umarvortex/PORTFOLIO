@@ -592,13 +592,15 @@
 
 .tools-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 2fr));
+    grid-template-columns: repeat(2, 1fr); /* Two equal columns */
     gap: var(--space-xl);
+    justify-items: center; /* Center items horizontally */
 }
 
 .tool-item {
     text-align: center;
     transition: all var(--transition-fast);
+    width: 100%; /* Make items fill their grid cells */
 }
 
 .tool-item:hover {
@@ -606,8 +608,8 @@
 }
 
 .tool-icon {
-    width: 80px;
-    height: 80px;
+    width: 100%; /* Fill container width */
+    height: 80px; /* Fixed height */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -618,6 +620,15 @@
     border-radius: var(--radius-lg);
     margin: 0 auto var(--space-md);
     transition: all var(--transition-fast);
+    padding: 0; /* Remove any padding */
+}
+
+/* Ensure images fill their containers */
+.tool-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* or 'cover' depending on your preference */
+    padding: 10px; /* Optional: add some padding inside the box */
 }
 
 .tool-item:hover .tool-icon {
