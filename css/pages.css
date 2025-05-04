@@ -677,14 +677,18 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     gap: var(--space-2xl);
-    padding: var(--space-lg);
-    margin: 0 var(--space-md);
+    padding: var(--space-lg) 0; 
+    margin: 0 8px; 
+    max-width: calc(100% - 16px);
 }
 
 .project-item {
     transition: all var(--transition-normal);
     margin-bottom: var(--space-xl);
+    width: 100%;
 }
+
+
 
 .project-card {
     height: 100%;
