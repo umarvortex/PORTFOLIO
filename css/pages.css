@@ -6,7 +6,7 @@
     overflow: hidden;
 }
 
-.lightbox-text p {
+.lightbox-section p {
     color: var(--text-secondary);
     margin-bottom: var(--space-md);
     line-height: 1.6;
