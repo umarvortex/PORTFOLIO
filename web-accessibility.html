@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Accessibility Best Practices | Portfolio</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/pages.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="header-wrapper">
+                <div class="logo">
+                    <a href="../index.html">Portfolio<span>.</span></a>
+                </div>
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li class="nav-item"><a href="../index.html" class="nav-link">Home</a></li>
+                        <li class="nav-item"><a href="../about.html" class="nav-link">About</a></li>
+                        <li class="nav-item"><a href="../skills.html" class="nav-link">Skills</a></li>
+                        <li class="nav-item"><a href="../projects.html" class="nav-link">Projects</a></li>
+                        <li class="nav-item"><a href="../blog.html" class="nav-link active">Blog</a></li>
+                        <li class="nav-item"><a href="../contact.html" class="nav-link">Contact</a></li>
+                    </ul>
+                </nav>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav">
+        <ul class="mobile-nav-list">
+            <li class="mobile-nav-item"><a href="../index.html" class="mobile-nav-link">Home</a></li>
+            <li class="mobile-nav-item"><a href="../about.html" class="mobile-nav-link">About</a></li>
+            <li class="mobile-nav-item"><a href="../skills.html" class="mobile-nav-link">Skills</a></li>
+            <li class="mobile-nav-item"><a href="../projects.html" class="mobile-nav-link">Projects</a></li>
+            <li class="mobile-nav-item"><a href="../blog.html" class="mobile-nav-link active">Blog</a></li>
+            <li class="mobile-nav-item"><a href="../contact.html" class="mobile-nav-link">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Blog Post Header -->
+    <section class="page-header">
+        <div class="container">
+            <div class="page-header-content">
+                <h1 class="page-title">Blog</h1>
+                <div class="breadcrumb">
+                    <a href="../index.html">Home</a>
+                    <span>/</span>
+                    <a href="../blog.html">Blog</a>
+                    <span>/</span>
+                    <span>Web Accessibility Best Practices</span>
+                </div>
+            </div>
+        </div>
+        <div class="page-header-background">
+            <div class="gradient-blob page-blob-1"></div>
+            <div class="gradient-blob page-blob-2"></div>
+        </div>
+    </section>
+
+    <!-- Blog Post Content -->
+    <section class="blog-post">
+        <div class="container">
+            <div class="blog-post-container">
+                <div class="blog-post-header">
+                    <div class="blog-post-meta">
+                        <span class="post-category">Web Development</span>
+                        <span class="post-date">December 10, 2024</span>
+                    </div>
+                    <h1 class="blog-post-title">Web Accessibility Best Practices</h1>
+                </div>
+                
+                <img src="../images/blog-5.jpg" alt="Web Accessibility Best Practices" class="blog-post-image">
+                
+                <div class="blog-post-content">
+                    <p>
+                        Web accessibility is the practice of ensuring websites, tools, and technologies are designed and developed so that people with disabilities can use them effectively. Beyond being a legal requirement in many countries, creating accessible websites is simply the right thing to do—expanding your reach to the over one billion people worldwide with disabilities.
+                    </p>
+                    
+                    <p>
+                        This guide outlines essential guidelines and best practices for building inclusive and accessible websites that everyone can use, regardless of their abilities or the tools they use to navigate the web.
+                    </p>
+
+                    <h2>Why Accessibility Matters</h2>
+                    <div class="responsive-container">
+                        <div class="accessibility-card">
+                            <div class="accessibility-icon">
+                                <i class="fas fa-universal-access"></i>
+                            </div>
+                            <h3>Inclusivity</h3>
+                            <p>Everyone deserves equal access to digital content and services</p>
+                        </div>
+                        <div class="accessibility-card">
+                            <div class="accessibility-icon">
+                                <i class="fas fa-gavel"></i>
+                            </div>
+                            <h3>Legal Compliance</h3>
+                            <p>Many regions require accessibility compliance (ADA, AODA, EAA)</p>
+                        </div>
+                        <div class="accessibility-card">
+                            <div class="accessibility-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h3>Business Impact</h3>
+                            <p>Reach more users and improve SEO and user experience</p>
+                        </div>
+                    </div>
+
+                    <h2>Understanding WCAG</h2>
+                    <p>
+                        The Web Content Accessibility Guidelines (WCAG) are the industry standard for accessibility. Developed by the W3C's Web Accessibility Initiative (WAI), these guidelines help make web content more accessible to people with disabilities. The guidelines are organized around four key principles:
+                    </p>
+
+                    <div class="wcag-principles">
+                        <div class="wcag-principle">
+                            <h3>Perceivable</h3>
+                            <p>Information and user interface components must be presentable to users in ways they can perceive. This means providing text alternatives for non-text content and creating content that can be presented in different ways.</p>
+                        </div>
+                        <div class="wcag-principle">
+                            <h3>Operable</h3>
+                            <p>User interface components and navigation must be operable. This means making all functionality available from a keyboard and giving users enough time to read and use content.</p>
+                        </div>
+                        <div class="wcag-principle">
+                            <h3>Understandable</h3>
+                            <p>Information and the operation of the user interface must be understandable. This means making text readable and predictable, and helping users avoid and correct mistakes.</p>
+                        </div>
+                        <div class="wcag-principle">
+                            <h3>Robust</h3>
+                            <p>Content must be robust enough to be interpreted reliably by a wide variety of user agents, including assistive technologies. This means maximizing compatibility with current and future tools.</p>
+                        </div>
+                    </div>
+
+                    <h2>Key Accessibility Best Practices</h2>
+
+                    <h3>1. Semantic HTML</h3>
+                    <p>
+                        Using the right HTML elements for their intended purpose ensures that content is properly structured and meaningful to both browsers and assistive technologies.
+                    </p>
+
+                    <div class="comparison-container">
+                        <div class="bad-example">
+                            <h4>Instead of this:</h4>
+                            <div class="code-block">
+                                <pre><code class="language-html">&lt;div class="header">
+  &lt;div class="nav-item">Home&lt;/div>
+  &lt;div class="nav-item">About&lt;/div>
+  &lt;div class="nav-item">Contact&lt;/div>
+&lt;/div>
+
+&lt;div class="title">Welcome to Our Website&lt;/div>
+&lt;div class="content">
+  This is some important information.
+&lt;/div>
+
+&lt;div class="button" onclick="submitForm()">Submit&lt;/div></code></pre>
+                            </div>
+                        </div>
+                        <div class="good-example">
+                            <h4>Do this:</h4>
+                            <div class="code-block">
+                                <pre><code class="language-html">&lt;header>
+  &lt;nav>
+    &lt;a href="/">Home&lt;/a>
+    &lt;a href="/about">About&lt;/a>
+    &lt;a href="/contact">Contact&lt;/a>
+  &lt;/nav>
+&lt;/header>
+
+&lt;h1>Welcome to Our Website&lt;/h1>
+&lt;main>
+  &lt;p>This is some important information.&lt;/p>
+&lt;/main>
+
+&lt;button type="submit">Submit&lt;/button></code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3>2. Keyboard Accessibility</h3>
+                    <p>
+                        All interactive elements must be accessible using only a keyboard, as many users cannot use a mouse. This includes ensuring proper focus states and logical tab order.
+                    </p>
+
+                    <div class="code-block">
+                        <pre><code class="language-css">/* Make focus states visible and consistent */
+:focus {
+  outline: 2px solid #4a90e2;
+  outline-offset: 2px;
+}
+
+/* Custom component focus styles */
+.custom-button:focus {
+  outline: 2px solid #4a90e2;
+  box-shadow: 0 0 0 4px rgba(74, 144, 226, 0.3);
+  border-color: #4a90e2;
+}</code></pre>
+                    </div>
+
+                    <p>
+                        Always ensure that custom components are keyboard accessible:
+                    </p>
+
+                    <div class="code-block">
+                        <pre><code class="language-javascript">// Example: Making a custom dropdown keyboard accessible
+const Dropdown = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const options = ['Option 1', 'Option 2', 'Option 3'];
+  
+  const handleKeyDown = (e) => {
+    switch(e.key) {
+      case 'ArrowDown':
+        e.preventDefault();
+        setSelectedIndex((prev) => Math.min(prev + 1, options.length - 1));
+        break;
+      case 'ArrowUp':
+        e.preventDefault();
+        setSelectedIndex((prev) => Math.max(prev - 1, 0));
+        break;
+      case 'Enter':
+      case 'Space':
+        e.preventDefault();
+        if (isOpen) {
+          // Select the option and close dropdown
+          setIsOpen(false);
+        } else {
+          setIsOpen(true);
+        }
+        break;
+      case 'Escape':
+        e.preventDefault();
+        setIsOpen(false);
+        break;
+    }
+  };
+  
+  return (
+    &lt;div 
+      role="combobox" 
+      aria-expanded={isOpen}
+      aria-haspopup="listbox"
+      tabIndex={0}
+      onKeyDown={handleKeyDown}
+    >
+      {/* Dropdown implementation */}
+    &lt;/div>
+  );
+};</code></pre>
+                    </div>
+
+                    <div class="info-box">
+                        <div class="info-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <div class="info-content">
+                            <h3>Testing Tip</h3>
+                            <p>Try navigating your website using only the keyboard. Can you access all interactive elements? Is the focus visible at all times? Can you easily understand where you are on the page?</p>
+                        </div>
+                    </div>
+
+                    <h3>3. Images and Alternative Text</h3>
+                    <p>
+                        Always provide descriptive alternative text for images to make them accessible to screen reader users and in situations where images cannot be displayed.
+                    </p>
+
+                    <div class="comparison-container">
+                        <div class="bad-example">
+                            <h4>Instead of this:</h4>
+                            <div class="code-block">
+                                <pre><code class="language-html">&lt;img src="logo.png">
+&lt;img src="banner.jpg" alt="banner">
+&lt;img src="icon.svg" alt="image"></code></pre>
+                            </div>
+                        </div>
+                        <div class="good-example">
+                            <h4>Do this:</h4>
+                            <div class="code-block">
+                                <pre><code class="language-html">&lt;img src="logo.png" alt="Company Name Logo">
+&lt;img src="banner.jpg" alt="Team collaborating in modern office space">
+&lt;img src="icon.svg" alt="Download PDF" role="img"></code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p>
+                        For decorative images that don't add content value, use an empty alt attribute:
+                    </p>
+
+                    <div class="code-block">
+                        <pre><code class="language-html">&lt;img src="decorative-line.png" alt="" role="presentation"></code></pre>
+                    </div>
+
+                    <h3>4. Color and Contrast</h3>
+                    <p>
+                        Ensure sufficient color contrast between text and its background. WCAG 2.1 requires a contrast ratio of at least 4.5:1 for normal text and 3:1 for large text.
+                    </p>
+
+                    <div class="contrast-examples">
+                        <div class="contrast-example poor-contrast">
+                            <p>Poor contrast: difficult to read</p>
+                        </div>
+                        <div class="contrast-example good-contrast">
+                            <p>Good contrast: easy to read</p>
+                        </div>
+                    </div>
+
+                    <p>
+                        Never rely on color alone to convey information:
+                    </p>
+
+                    <div class="comparison-container">
+                        <div class="bad-example">
+                            <h4>Instead of this:</h4>
+                            <div class="code-block">
+                                <pre><code class="language-html">&lt;p>Fields in &lt;span style="color: red;">red&lt;/span> are required.&lt;/p>
+&lt;div class="status-green">Success&lt;/div></code></pre>
+                            </div>
+                        </div>
+                        <div class="good-example">
+                            <h4>Do this:</h4>
+                            <div class="code-block">
+                                <pre><code class="language-html">&lt;p>Fields marked with an asterisk (*) are required.&lt;/p>
+&lt;div class="status-success">
+  &lt;i class="fas fa-check-circle" aria-hidden="true">&lt;/i> Success
+&lt;/div></code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3>5. ARIA (Accessible Rich Internet Applications)</h3>
+                    <p>
+                        ARIA attributes can enhance accessibility when HTML semantics alone aren't enough. However, they should be used judiciously and correctly.
+                    </p>
+
+                    <div class="code-block">
+                        <pre><code class="language-html">&lt;button 
+  aria-expanded="false" 
+  aria-controls="navigation-menu"
+>
+  &lt;span class="sr-only">Menu&lt;/span>
+  &lt;i class="fas fa-bars" aria-hidden="true">&lt;/i>
+&lt;/button>
+
+&lt;nav id="navigation-menu" aria-label="Main navigation" hidden>
+  &lt;!-- Navigation items -->
+&lt;/nav></code></pre>
+                    </div>
+
+                    <div class="info-box">
+                        <div class="info-icon">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <div class="info-content">
+                            <h3>The First Rule of ARIA</h3>
+                            <p>If you can use a native HTML element or attribute with the semantics and behavior you require, do so instead of using ARIA. Only use ARIA when you can't achieve the semantics with standard HTML.</p>
+                        </div>
+                    </div>
+
+                    <h3>6. Forms and Error Handling</h3>
+                    <p>
+                        Create accessible forms by using proper labels, describing inputs clearly, and providing helpful error messages.
+                    </p>
+
+                    <div class="code-block">
+                        <pre><code class="language-html">&lt;form>
+  &lt;div class="form-group">
+    &lt;label for="email">Email address:&lt;/label>
+    &lt;input 
+      type="email" 
+      id="email" 
+      name="email" 
+      aria-required="true"
+      aria-describedby="email-hint"
+    >
+    &lt;p id="email-hint" class="form-hint">We'll never share your email with anyone else.&lt;/p>
+  &lt;/div>
+  
+  &lt;div class="form-group">
+    &lt;label for="password">Password:&lt;/label>
+    &lt;input 
+      type="password" 
+      id="password" 
+      name="password"
+      aria-required="true"
+      aria-describedby="password-error"
+      aria-invalid="true"
+    >
+    &lt;p id="password-error" class="form-error">
+      &lt;i class="fas fa-exclamation-circle" aria-hidden="true">&lt;/i>
+      Password must be at least 8 characters
+    &lt;/p>
+  &lt;/div>
+  
+  &lt;button type="submit">Sign In&lt;/button>
+&lt;/form></code></pre>
+                    </div>
+
+                    <h3>7. Document Structure and Headings</h3>
+                    <p>
+                        Use headings (h1-h6) to create a logical document structure. Screen reader users rely on headings to navigate content efficiently.
+                    </p>
+
+                    <div class="code-block">
+                        <pre><code class="language-html">&lt;h1>Main Page Title&lt;/h1>
+&lt;section>
+  &lt;h2>Section Title&lt;/h2>
+  &lt;p>Section content...&lt;/p>
+  
+  &lt;article>
+    &lt;h3>Article Title&lt;/h3>
+    &lt;p>Article content...&lt;/p>
+    
+    &lt;section>
+      &lt;h4>Subsection Title&lt;/h4>
+      &lt;p>Subsection content...&lt;/p>
+    &lt;/section>
+  &lt;/article>
+&lt;/section></code></pre>
+                    </div>
+
+                    <h2>Testing for Accessibility</h2>
+                    <p>
+                        Regular testing is essential to ensure your website remains accessible. Here are some methods you should incorporate into your development workflow:
+                    </p>
+
+                    <div class="testing-methods">
+                        <div class="testing-method">
+                            <div class="testing-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <h3>Automated Testing</h3>
+                            <p>Use tools like Axe, WAVE, or Lighthouse to identify common accessibility issues automatically.</p>
+                        </div>
+                        <div class="testing-method">
+                            <div class="testing-icon">
+                                <i class="fas fa-keyboard"></i>
+                            </div>
+                            <h3>Keyboard Testing</h3>
+                            <p>Navigate your entire site using only the keyboard to ensure all functionality is accessible.</p>
+                        </div>
+                        <div class="testing-method">
+                            <div class="testing-icon">
+                                <i class="fas fa-volume-up"></i>
+                            </div>
+                            <h3>Screen Reader Testing</h3>
+                            <p>Test with screen readers like NVDA, JAWS, or VoiceOver to experience how users with visual impairments interact with your site.</p>
+                        </div>
+                        <div class="testing-method">
+                            <div class="testing-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h3>User Testing</h3>
+                            <p>Involve people with disabilities in your testing process to get authentic feedback on real-world usage.</p>
+                        </div>
+                    </div>
+
+                    <h2>Integrating Accessibility into Your Workflow</h2>
+                    <p>
+                        Accessibility should be considered at every stage of the development process, not as an afterthought. Here's how to integrate it into your workflow:
+                    </p>
+
+                    <ol class="workflow-steps">
+                        <li>
+                            <strong>Planning:</strong> Include accessibility requirements in project specifications and user stories
+                        </li>
+                        <li>
+                            <strong>Design:</strong> Consider color contrast, text size, and layout from the beginning
+                        </li>
+                        <li>
+                            <strong>Development:</strong> Use semantic HTML, implement keyboard support, and follow ARIA patterns
+                        </li>
+                        <li>
+                            <strong>Testing:</strong> Include accessibility testing in your QA process
+                        </li>
+                        <li>
+                            <strong>Deployment:</strong> Include accessibility features in documentation
+                        </li>
+                        <li>
+                            <strong>Maintenance:</strong> Regularly audit your site for accessibility issues
+                        </li>
+                    </ol>
+
+                    <h2>Conclusion</h2>
+                    <p>
+                        Web accessibility isn't just about compliance or avoiding legal issues—it's about creating a better user experience for everyone. By implementing these best practices, you're not only making your site usable for people with disabilities but also improving it for all users across different devices and situations.
+                    </p>
+                    
+                    <p>
+                        Remember that accessibility is a journey, not a destination. Start with small improvements and gradually build your knowledge and implementation. The most important step is to begin considering accessibility in your development process.
+                    </p>
+
+                    <div class="cta-container">
+                        <div class="cta-box">
+                            <h3>Ready to get started with accessibility?</h3>
+                            <p>Try running a quick scan of your website with the <a href="https://wave.webaim.org/" target="_blank">WAVE Web Accessibility Evaluation Tool</a> to identify immediate improvement opportunities.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="blog-post-tags">
+                    <span class="blog-post-tag">Accessibility</span>
+                    <span class="blog-post-tag">Web Development</span>
+                    <span class="blog-post-tag">Inclusive Design</span>
+                    <span class="blog-post-tag">WCAG</span>
+                    <span class="blog-post-tag">A11y</span>
+                </div>
+                
+                <div class="blog-post-navigation">
+                    <a href="jamstack-architecture.html" class="blog-post-nav-link">
+                        <i class="fas fa-arrow-left"></i>
+                        Previous Post: The Rise of JAMstack Architecture
+                    </a>
+                    <a href="getting-started-docker.html" class="blog-post-nav-link">
+                        Next Post: Getting Started with Docker
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <div class="blog-post-share">
+                    <h3 class="blog-post-share-title">Share This Post</h3>
+                    <div class="blog-post-share-links">
+                        <a href="#" class="blog-post-share-link">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="blog-post-share-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="blog-post-share-link">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="blog-post-share-link">
+                            <i class="fab fa-pinterest"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Posts -->
+    <section class="related-posts">
+        <div class="container">
+            <h2 class="related-posts-title">Related Posts</h2>
+            <div class="related-posts-grid">
+                <!-- Related Post 1 -->
+                <div class="blog-card">
+                    <div class="blog-card-img">
+                        <img src="../images/blog-1.jpg" alt="Building Responsive UIs with Modern CSS">
+                    </div>
+                    <div class="blog-card-content">
+                        <div class="blog-card-meta">
+                            <span class="post-category">Web Development</span>
+                            <span class="post-date">March 28, 2025</span>
+                        </div>
+                        <h3 class="blog-card-title">Building Responsive UIs with Modern CSS</h3>
+                        <p class="blog-card-excerpt">
+                            A deep dive into modern CSS techniques for building responsive and adaptive user interfaces.
+                        </p>
+                        <a href="responsive-ui-css.html" class="btn btn-text">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Related Post 2 -->
+                <div class="blog-card">
+                    <div class="blog-card-img">
+                        <img src="../images/blog-5.jpg" alt="Optimizing Website Performance">
+                    </div>
+                    <div class="blog-card-content">
+                        <div class="blog-card-meta">
+                            <span class="post-category">Web Development</span>
+                            <span class="post-date">January 28, 2025</span>
+                        </div>
+                        <h3 class="blog-card-title">Optimizing Website Performance</h3>
+                        <p class="blog-card-excerpt">
+                            Tips and techniques to improve your website's loading speed and overall performance.
+                        </p>
+                        <a href="optimizing-website-performance.html" class="btn btn-text">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-wrapper">
+                <div class="footer-top">
+                    <div class="footer-logo">
+                        <a href="../index.html">Portfolio<span>.</span></a>
+                    </div>
+                    <div class="footer-social">
+                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-divider"></div>
+                <div class="footer-bottom">
+                    <div class="footer-copyright">
+                        &copy; <span id="currentYear"></span> Portfolio. All rights reserved.
+                    </div>
+                    <div class="footer-nav">
+                        <a href="../index.html" class="footer-nav-link">Home</a>
+                        <a href="../about.html" class="footer-nav-link">About</a>
+                        <a href="../skills.html" class="footer-nav-link">Skills</a>
+                        <a href="../projects.html" class="footer-nav-link">Projects</a>
+                        <a href="../blog.html" class="footer-nav-link">Blog</a>
+                        <a href="../contact.html" class="footer-nav-link">Contact</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../js/main.js"></script>
+</body>
+</html> 

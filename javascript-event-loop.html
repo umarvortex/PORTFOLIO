@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understanding the Event Loop in JavaScript | Portfolio</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/pages.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .blog-post-content h2 {
+            font-size: 28px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        .blog-post-content h3 {
+            font-size: 22px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+
+        code {
+           color: #333333;
+        }
+        
+        .blog-post-content p {
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        .blog-post-content ul, .blog-post-content ol {
+            margin-bottom: 20px;
+            padding-left: 25px;
+        }
+        .blog-post-content li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+        .blog-post-content pre {
+            background-color: #f4f4f4;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin-bottom: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .blog-post-content code {
+            background-color: #f4f4f4;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+        .blog-post-content blockquote {
+            border-left: 4px solid var(--primary-color);
+            padding-left: 20px;
+            margin-left: 0;
+            margin-right: 0;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        .blog-post-content img {
+            max-width: 100%;
+            height: auto;
+            margin: 25px 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .blog-post-content .note {
+            background-color: #f8f9fa;
+            border-left: 4px solid #17a2b8;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+        .blog-post-content .warning {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+        .diagram {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 30px 0;
+            text-align: center;
+            font-family: 'Courier New', monospace;
+        }
+        .diagram pre {
+            background-color: transparent;
+            padding: 0;
+            margin: 0;
+            display: inline-block;
+            text-align: left;
+        }
+        @media (max-width: 768px) {
+            .blog-post-content h2 {
+                font-size: 24px;
+            }
+            .blog-post-content h3 {
+                font-size: 20px;
+            }
+            .blog-post-content pre {
+                padding: 10px;
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="header-wrapper">
+                <div class="logo">
+                    <a href="../index.html">Portfolio<span>.</span></a>
+                </div>
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li class="nav-item"><a href="../index.html" class="nav-link">Home</a></li>
+                        <li class="nav-item"><a href="../about.html" class="nav-link">About</a></li>
+                        <li class="nav-item"><a href="../skills.html" class="nav-link">Skills</a></li>
+                        <li class="nav-item"><a href="../projects.html" class="nav-link">Projects</a></li>
+                        <li class="nav-item"><a href="../blog.html" class="nav-link active">Blog</a></li>
+                        <li class="nav-item"><a href="../contact.html" class="nav-link">Contact</a></li>
+                    </ul>
+                </nav>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav">
+        <ul class="mobile-nav-list">
+            <li class="mobile-nav-item"><a href="../index.html" class="mobile-nav-link">Home</a></li>
+            <li class="mobile-nav-item"><a href="../about.html" class="mobile-nav-link">About</a></li>
+            <li class="mobile-nav-item"><a href="../skills.html" class="mobile-nav-link">Skills</a></li>
+            <li class="mobile-nav-item"><a href="../projects.html" class="mobile-nav-link">Projects</a></li>
+            <li class="mobile-nav-item"><a href="../blog.html" class="mobile-nav-link active">Blog</a></li>
+            <li class="mobile-nav-item"><a href="../contact.html" class="mobile-nav-link">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Blog Post Header -->
+    <section class="page-header">
+        <div class="container">
+            <div class="page-header-content">
+                <h1 class="page-title">Blog</h1>
+                <div class="breadcrumb">
+                    <a href="../index.html">Home</a>
+                    <span>/</span>
+                    <a href="../blog.html">Blog</a>
+                    <span>/</span>
+                    <span>Understanding the Event Loop in JavaScript</span>
+                </div>
+            </div>
+        </div>
+        <div class="page-header-background">
+            <div class="gradient-blob page-blob-1"></div>
+            <div class="gradient-blob page-blob-2"></div>
+        </div>
+    </section>
+
+    <!-- Blog Post Content -->
+    <section class="blog-post">
+        <div class="container">
+            <div class="blog-post-container">
+                <div class="blog-post-header">
+                    <div class="blog-post-meta">
+                        <span class="post-category">Web Development</span>
+                        <span class="post-date">November 28, 2024</span>
+                    </div>
+                    <h1 class="blog-post-title">Understanding the Event Loop in JavaScript</h1>
+                </div>
+                
+                <img src="../images/blog-1.jpg" alt="Understanding the Event Loop in JavaScript" class="blog-post-image">
+                
+                <div class="blog-post-content">
+                    <p>
+                        JavaScript is often described as single-threaded and non-blocking, which might seem contradictory. How can a single-threaded language handle multiple operations without getting stuck? The answer lies in understanding the Event Loop, one of JavaScript's most fundamental yet widely misunderstood mechanisms.
+                    </p>
+                    
+                    <p>
+                        In this article, we'll dive deep into how the JavaScript Event Loop works, why it matters for performance, and how you can leverage this knowledge to write more efficient code.
+                    </p>
+                    
+                    <h2>The Single-Threaded Nature of JavaScript</h2>
+                    <p>
+                        JavaScript was designed as a single-threaded language, meaning it has one call stack and can do only one thing at a time. This simplifies programming by avoiding complex concurrency issues, but it also presents challenges when performing operations that might take time, like network requests or file operations.
+                    </p>
+
+                    <p>
+                        If JavaScript were purely synchronous, any long-running operation would block the entire program, making web applications freeze and unresponsive. This is where the Event Loop comes in—it enables JavaScript to perform non-blocking operations despite its single-threaded nature.
+                    </p>
+
+                    <h2>The Components of JavaScript's Runtime Environment</h2>
+                    <p>
+                        To understand the Event Loop, we first need to understand the components of JavaScript's runtime environment:
+                    </p>
+
+                    <h3>1. Call Stack</h3>
+                    <p>
+                        The call stack is a data structure that records where in the program we are. When we call a function, it's pushed onto the stack. When we return from a function, it's popped off the stack. The call stack is a LIFO (Last In, First Out) structure.
+                    </p>
+
+                    <h3>2. Heap</h3>
+                    <p>
+                        The heap is an unstructured memory region where objects are allocated. This is where memory allocation happens for variables, functions, and objects.
+                    </p>
+
+                    <h3>3. Message Queue (or Callback Queue)</h3>
+                    <p>
+                        The message queue contains messages to be processed along with their associated callback functions. When the call stack is empty, messages are taken from the queue and processed.
+                    </p>
+
+                    <h3>4. Web APIs</h3>
+                    <p>
+                        In browsers, Web APIs like DOM, AJAX (XMLHttpRequest), Timers (setTimeout), and Fetch provide additional functionality beyond the core JavaScript language. These APIs are provided by the browser environment, not the JavaScript engine.
+                    </p>
+
+                    <h3>5. Event Loop</h3>
+                    <p>
+                        The event loop continuously checks if the call stack is empty. If it is, it takes the first event from the queue and pushes it to the call stack, which effectively runs it.
+                    </p>
+
+                    <div class="diagram">
+                        <pre>
+┌─────────────────────────┐    ┌───────────────┐
+│        Call Stack       │    │     Heap      │
+└───────────┬─────────────┘    └───────────────┘
+            │   ↑                         
+            │   │                         
+            ↓   │                         
+┌─────────────────────────┐                     
+│       Event Loop        │                     
+└───────────┬─────────────┘                     
+            │   ↑                         
+            │   │                         
+            ↓   │                         
+┌─────────────────────────┐    ┌───────────────┐
+│     Callback Queue      │    │   Web APIs    │
+└─────────────────────────┘    └───────────────┘</pre>
+                    </div>
+
+                    <h2>How the Event Loop Works</h2>
+                    <p>
+                        The event loop works through this continuous cycle:
+                    </p>
+
+                    <ol>
+                        <li>Check if the call stack is empty</li>
+                        <li>If empty, look at the callback queue</li>
+                        <li>If there are callbacks in the queue, move the first one to the call stack</li>
+                        <li>The call stack executes the callback</li>
+                        <li>Repeat</li>
+                    </ol>
+
+                    <p>
+                        Let's illustrate this with a simple example:
+                    </p>
+
+                    <pre>
+console.log('Start');
+
+setTimeout(function() {
+    console.log('Timeout callback');
+}, 0);
+
+console.log('End');</pre>
+
+                    <p>
+                        The output of this code will be:
+                    </p>
+
+                    <pre>
+Start
+End
+Timeout callback</pre>
+
+                    <p>
+                        Even though we set the timeout to 0 milliseconds, "Timeout callback" is printed last. Here's why:
+                    </p>
+
+                    <ol>
+                        <li><code>console.log('Start')</code> is pushed to the call stack and executed immediately.</li>
+                        <li><code>setTimeout</code> is pushed to the call stack, then executed. The Web API takes over and starts a timer with 0ms.</li>
+                        <li>When the timer completes (immediately in this case), the callback is pushed to the callback queue.</li>
+                        <li>Meanwhile, <code>console.log('End')</code> is pushed to the call stack and executed.</li>
+                        <li>Only after the call stack is empty does the event loop push the timeout callback from the queue to the stack.</li>
+                        <li>Finally, <code>console.log('Timeout callback')</code> is executed.</li>
+                    </ol>
+
+                    <h2>Microtasks and Macrotasks</h2>
+                    <p>
+                        The event loop actually manages two types of queues:
+                    </p>
+
+                    <h3>Macrotask Queue</h3>
+                    <p>
+                        This is the standard task queue we've been discussing. It handles tasks like:
+                    </p>
+                    <ul>
+                        <li>setTimeout callbacks</li>
+                        <li>setInterval callbacks</li>
+                        <li>UI rendering</li>
+                        <li>I/O operations</li>
+                        <li>Event listeners</li>
+                    </ul>
+
+                    <h3>Microtask Queue</h3>
+                    <p>
+                        This queue has higher priority and is emptied completely before moving on to any macrotasks. It handles:
+                    </p>
+                    <ul>
+                        <li>Promise callbacks (.then(), .catch(), .finally())</li>
+                        <li>MutationObserver callbacks</li>
+                        <li>queueMicrotask() callbacks</li>
+                    </ul>
+
+                    <p>
+                        The event loop prioritizes microtasks, which affects the execution order:
+                    </p>
+
+                    <pre>
+console.log('Start');
+
+setTimeout(() => {
+    console.log('Timeout callback (Macrotask)');
+}, 0);
+
+Promise.resolve()
+    .then(() => {
+        console.log('Promise callback (Microtask)');
+    });
+
+console.log('End');</pre>
+
+                    <p>
+                        Output:
+                    </p>
+
+                    <pre>
+Start
+End
+Promise callback (Microtask)
+Timeout callback (Macrotask)</pre>
+
+                    <p>
+                        The Promise callback (a microtask) executes before the setTimeout callback (a macrotask), even though both were queued at almost the same time.
+                    </p>
+
+                    <h2>Real-World Examples and Common Pitfalls</h2>
+
+                    <h3>Example 1: Infinite Loops Block Everything</h3>
+                    <p>
+                        Since JavaScript is single-threaded, an infinite loop or a very long computation will block the entire thread, preventing any event handling:
+                    </p>
+
+                    <pre>
+console.log('Start');
+
+// This will block the thread
+function blockThread() {
+    while(true) {
+        // Infinite loop
+    }
+}
+
+blockThread();
+
+// This will never run!
+console.log('End');</pre>
+
+                    <p>
+                        The call stack never empties because of the infinite loop, so the event loop can't proceed.
+                    </p>
+
+                    <h3>Example 2: Event Loop and UI Rendering</h3>
+                    <p>
+                        In browsers, UI rendering is also a task managed by the event loop. If the call stack is busy, the UI can't update, making the page appear frozen:
+                    </p>
+
+                    <pre>
+// This function does heavy computation and blocks the thread
+function expensiveOperation() {
+    const start = Date.now();
+    while (Date.now() - start < 5000) {
+        // Block for 5 seconds
+    }
+}
+
+// This click makes the UI freeze for 5 seconds
+document.getElementById('myButton').addEventListener('click', function() {
+    expensiveOperation();
+    // UI will be unresponsive during this time
+});</pre>
+
+                    <h3>Example 3: Using setTimeout for Non-Blocking Operations</h3>
+                    <p>
+                        You can break up long tasks into smaller chunks using setTimeout to prevent UI blocking:
+                    </p>
+
+                    <pre>
+const data = new Array(1000000).fill(0);
+const chunkSize = 10000;
+
+function processChunk(start) {
+    // Process a chunk of data
+    for (let i = start; i < Math.min(start + chunkSize, data.length); i++) {
+        data[i] = data[i] + 1; // Some operation
+    }
+    
+    // Schedule next chunk if there's more data
+    if (start + chunkSize < data.length) {
+        setTimeout(() => {
+            processChunk(start + chunkSize);
+        }, 0);
+    } else {
+        console.log('Processing complete');
+    }
+}
+
+// Start processing first chunk
+processChunk(0);</pre>
+
+                    <p>
+                        This pattern allows the UI to remain responsive during long-running operations.
+                    </p>
+
+                    <h2>Node.js Event Loop vs. Browser Event Loop</h2>
+                    <p>
+                        Though they share the same name and core concepts, the Node.js event loop has some differences from browser event loops:
+                    </p>
+
+                    <ul>
+                        <li><strong>Implementation:</strong> Node.js uses the libuv library to implement its event loop, while browsers have their own implementations.</li>
+                        <li><strong>Phases:</strong> The Node.js event loop has distinct phases (timers, pending callbacks, idle/prepare, poll, check, close callbacks) that it cycles through in order.</li>
+                        <li><strong>I/O Operations:</strong> Node.js has more focus on file system and network I/O operations.</li>
+                        <li><strong>process.nextTick():</strong> Node.js has this special API that creates callbacks which execute after the current operation completes but before the event loop continues.</li>
+                    </ul>
+
+                    <h2>Best Practices for Working with the Event Loop</h2>
+
+                    <h3>1. Avoid Blocking the Main Thread</h3>
+                    <p>
+                        Never run long operations synchronously. Use asynchronous APIs, Web Workers, or break tasks into smaller chunks.
+                    </p>
+
+                    <h3>2. Understand Timing and Order</h3>
+                    <p>
+                        Be aware of how microtasks and macrotasks are scheduled to avoid unexpected behavior in your code.
+                    </p>
+
+                    <h3>3. Use Promises and async/await</h3>
+                    <p>
+                        These modern JavaScript features make asynchronous code more readable while still working with the event loop:
+                    </p>
+
+                    <pre>
+// Instead of this:
+fetchData(function(error, data) {
+    if (error) {
+        handleError(error);
+    } else {
+        processData(data, function(error, result) {
+            if (error) {
+                handleError(error);
+            } else {
+                displayResult(result);
+            }
+        });
+    }
+});
+
+// Write this:
+async function handleData() {
+    try {
+        const data = await fetchData();
+        const result = await processData(data);
+        displayResult(result);
+    } catch (error) {
+        handleError(error);
+    }
+}
+
+handleData();</pre>
+
+                    <h3>4. Debounce and Throttle Event Handlers</h3>
+                    <p>
+                        For events that fire frequently (like scroll, resize, input), use debouncing or throttling to limit how often your callbacks run:
+                    </p>
+
+                    <pre>
+// Debounce example
+function debounce(func, wait) {
+    let timeout;
+    return function(...args) {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => {
+            func.apply(this, args);
+        }, wait);
+    };
+}
+
+const debouncedScroll = debounce(function() {
+    console.log('Scroll event handled');
+}, 200);
+
+window.addEventListener('scroll', debouncedScroll);</pre>
+
+                    <h3>5. Be Aware of Browser Rendering</h3>
+                    <p>
+                        Use requestAnimationFrame for animations instead of setTimeout, as it synchs with the browser's rendering cycle:
+                    </p>
+
+                    <pre>
+function animate() {
+    // Update animation
+    element.style.transform = `translateX(${position}px)`;
+    position += 5;
+    
+    if (position < 1000) {
+        // Schedule next frame
+        requestAnimationFrame(animate);
+    }
+}
+
+requestAnimationFrame(animate);</pre>
+
+                    <h2>Conclusion</h2>
+                    <p>
+                        The event loop is what makes JavaScript's asynchronous nature possible despite being single-threaded. By understanding how the event loop works, you can write more efficient code, avoid common pitfalls, and build responsive applications that handle operations concurrently without blocking the main thread.
+                    </p>
+
+                    <p>
+                        This understanding becomes even more crucial as applications grow in complexity. Whether you're building a simple website or a complex web application, the event loop is working behind the scenes to keep everything running smoothly.
+                    </p>
+
+                    <div class="note">
+                        <p><strong>Pro Tip:</strong> When debugging asynchronous JavaScript issues, remember to trace the order of operations through the event loop. Often what seems like a bug is just code executing in an unexpected order due to how the event loop works.</p>
+                    </div>
+                </div>
+                
+                <div class="blog-post-tags">
+                    <span class="blog-post-tag">JavaScript</span>
+                    <span class="blog-post-tag">Event Loop</span>
+                    <span class="blog-post-tag">Asynchronous</span>
+                    <span class="blog-post-tag">Web Development</span>
+                    <span class="blog-post-tag">Performance</span>
+                </div>
+                
+                <div class="blog-post-navigation">
+                    <a href="getting-started-docker.html" class="blog-post-nav-link">
+                        <i class="fas fa-arrow-left"></i>
+                        Previous Post: Getting Started with Docker
+                    </a>
+                    <a href="designing-dark-mode.html" class="blog-post-nav-link">
+                        Next Post: Designing for Dark Mode
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <div class="blog-post-share">
+                    <h3 class="blog-post-share-title">Share This Post</h3>
+                    <div class="blog-post-share-links">
+                        <a href="#" class="blog-post-share-link">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="blog-post-share-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="blog-post-share-link">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="blog-post-share-link">
+                            <i class="fab fa-pinterest"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Posts -->
+    <section class="related-posts">
+        <div class="container">
+            <h2 class="related-posts-title">Related Posts</h2>
+            <div class="related-posts-grid">
+                <!-- Related Post 1 -->
+                <div class="blog-card">
+                    <div class="blog-card-img">
+                        <img src="../images/blog-3.jpg" alt="Getting Started with React Hooks">
+                    </div>
+                    <div class="blog-card-content">
+                        <div class="blog-card-meta">
+                            <span class="post-category">Tutorials</span>
+                            <span class="post-date">February 28, 2025</span>
+                        </div>
+                        <h3 class="blog-card-title">Getting Started with React Hooks</h3>
+                        <p class="blog-card-excerpt">
+                            A comprehensive guide to understanding and implementing React Hooks in your applications.
+                        </p>
+                        <a href="react-hooks.html" class="btn btn-text">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Related Post 2 -->
+                <div class="blog-card">
+                    <div class="blog-card-img">
+                        <img src="../images/blog-5.jpg" alt="Optimizing Website Performance">
+                    </div>
+                    <div class="blog-card-content">
+                        <div class="blog-card-meta">
+                            <span class="post-category">Web Development</span>
+                            <span class="post-date">January 28, 2025</span>
+                        </div>
+                        <h3 class="blog-card-title">Optimizing Website Performance</h3>
+                        <p class="blog-card-excerpt">
+                            Tips and techniques to improve your website's loading speed and overall performance.
+                        </p>
+                        <a href="optimizing-website-performance.html" class="btn btn-text">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-wrapper">
+                <div class="footer-top">
+                    <div class="footer-logo">
+                        <a href="../index.html">Portfolio<span>.</span></a>
+                    </div>
+                    <div class="footer-social">
+                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-divider"></div>
+                <div class="footer-bottom">
+                    <div class="footer-copyright">
+                        &copy; <span id="currentYear"></span> Portfolio. All rights reserved.
+                    </div>
+                    <div class="footer-nav">
+                        <a href="../index.html" class="footer-nav-link">Home</a>
+                        <a href="../about.html" class="footer-nav-link">About</a>
+                        <a href="../skills.html" class="footer-nav-link">Skills</a>
+                        <a href="../projects.html" class="footer-nav-link">Projects</a>
+                        <a href="../blog.html" class="footer-nav-link">Blog</a>
+                        <a href="../contact.html" class="footer-nav-link">Contact</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../js/main.js"></script>
+</body>
+</html> 

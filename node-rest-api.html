@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building a REST API with Node.js | Portfolio</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/pages.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Blog Post Styles */
+        .blog-post-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 1rem;
+        }
+        
+        code {
+           color: #333333;
+        }
+        
+        .blog-post-header {
+            margin-bottom: 2rem;
+        }
+        
+        .blog-post-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        
+        .blog-post-title {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+        }
+        
+        .blog-post-image {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .blog-post-image:hover {
+            transform: scale(1.01);
+        }
+        
+        .blog-post-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-medium);
+        }
+        
+        .blog-post-content p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .blog-post-content h2 {
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem;
+            color: var(--text-dark);
+        }
+        
+        .blog-post-content h3 {
+            font-size: 1.5rem;
+            margin: 1.5rem 0 1rem;
+            color: var(--text-dark);
+        }
+        
+        .blog-post-content ul, .blog-post-content ol {
+            margin: 1rem 0 1.5rem 2rem;
+        }
+        
+        .blog-post-content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .blog-post-content blockquote {
+            border-left: 4px solid var(--primary-color);
+            padding-left: 1.5rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: var(--text-medium);
+        }
+        
+        .blog-post-content code {
+            background: #f4f4f4;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.9rem;
+        }
+        
+        .blog-post-content pre {
+            background: #f4f4f4;
+            padding: 1rem;
+            border-radius: 4px;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+        }
+        
+        .blog-post-content pre code {
+            background: none;
+            padding: 0;
+        }
+        
+        .blog-post-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 2rem 0;
+        }
+        
+        .blog-post-tag {
+            background: var(--bg-light);
+            color: var(--text-medium);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        
+        .blog-post-tag:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .blog-post-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin: 3rem 0;
+            padding: 1.5rem 0;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .blog-post-nav-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-medium);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .blog-post-nav-link:hover {
+            color: var(--primary-color);
+        }
+        
+        .blog-post-share {
+            margin: 2rem 0;
+        }
+        
+        .blog-post-share-title {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            color: var(--text-dark);
+        }
+        
+        .blog-post-share-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .blog-post-share-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--bg-light);
+            color: var(--text-medium);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .blog-post-share-link:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .related-posts {
+            margin: 4rem 0;
+            background-color: var(--bg-light);
+            padding: 3rem 0;
+        }
+        
+        .related-posts-title {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            color: var(--text-dark);
+            text-align: center;
+        }
+        
+        .related-posts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .code-block {
+            background: #282c34;
+            color: #abb2bf;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        
+        @media (max-width: 768px) {
+            .blog-post-title {
+                font-size: 2rem;
+            }
+            
+            .blog-post-content {
+                font-size: 1rem;
+            }
+            
+            .blog-post-navigation {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .related-posts-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="header-wrapper">
+                <div class="logo">
+                    <a href="../index.html">Portfolio<span>.</span></a>
+                </div>
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li class="nav-item"><a href="../index.html" class="nav-link">Home</a></li>
+                        <li class="nav-item"><a href="../about.html" class="nav-link">About</a></li>
+                        <li class="nav-item"><a href="../skills.html" class="nav-link">Skills</a></li>
+                        <li class="nav-item"><a href="../projects.html" class="nav-link">Projects</a></li>
+                        <li class="nav-item"><a href="../blog.html" class="nav-link active">Blog</a></li>
+                        <li class="nav-item"><a href="../contact.html" class="nav-link">Contact</a></li>
+                    </ul>
+                </nav>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav">
+        <ul class="mobile-nav-list">
+            <li class="mobile-nav-item"><a href="../index.html" class="mobile-nav-link">Home</a></li>
+            <li class="mobile-nav-item"><a href="../about.html" class="mobile-nav-link">About</a></li>
+            <li class="mobile-nav-item"><a href="../skills.html" class="mobile-nav-link">Skills</a></li>
+            <li class="mobile-nav-item"><a href="../projects.html" class="mobile-nav-link">Projects</a></li>
+            <li class="mobile-nav-item"><a href="../blog.html" class="mobile-nav-link active">Blog</a></li>
+            <li class="mobile-nav-item"><a href="../contact.html" class="mobile-nav-link">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Blog Post Header -->
+    <section class="page-header">
+        <div class="container">
+            <div class="page-header-content">
+                <h1 class="page-title">Blog</h1>
+                <div class="breadcrumb">
+                    <a href="../index.html">Home</a>
+                    <span>/</span>
+                    <a href="../blog.html">Blog</a>
+                    <span>/</span>
+                    <span>Building a REST API with Node.js</span>
+                </div>
+            </div>
+        </div>
+        <div class="page-header-background">
+            <div class="gradient-blob page-blob-1"></div>
+            <div class="gradient-blob page-blob-2"></div>
+        </div>
+    </section>
+
+    <!-- Blog Post Content -->
+    <section class="blog-post">
+        <div class="container">
+            <div class="blog-post-container">
+                <div class="blog-post-header">
+                    <div class="blog-post-meta">
+                        <span class="post-category">Tutorials</span>
+                        <span class="post-date">January 15, 2025</span>
+                    </div>
+                    <h1 class="blog-post-title">Building a REST API with Node.js</h1>
+                </div>
+                
+                <img src="../images/blog-6.jpg" alt="Building a REST API with Node.js" class="blog-post-image">
+                
+                <div class="blog-post-content">
+                    <p>
+                        Node.js has become one of the most popular platforms for building backend services, particularly REST APIs. Its event-driven, non-blocking I/O model makes it ideal for building scalable and efficient web services. In this comprehensive guide, we'll walk through creating a robust REST API using Node.js, Express, and MongoDB.
+                    </p>
+                    
+                    <h2>Understanding REST Architecture</h2>
+                    
+                    <p>
+                        REST (Representational State Transfer) is an architectural style for designing networked applications. RESTful APIs use HTTP requests to perform CRUD (Create, Read, Update, Delete) operations on resources, which are represented as URLs. The key principles of REST include:
+                    </p>
+                    
+                    <ul>
+                        <li><strong>Statelessness</strong> - Each request from client to server must contain all information needed to understand and process the request</li>
+                        <li><strong>Client-Server Architecture</strong> - Separation of concerns between client and server components</li>
+                        <li><strong>Cacheable</strong> - Responses must define themselves as cacheable or non-cacheable</li>
+                        <li><strong>Uniform Interface</strong> - Resources are identified in requests, manipulated through representations, and contain self-descriptive messages</li>
+                        <li><strong>Layered System</strong> - Intermediary servers can improve scalability</li>
+                    </ul>
+                    
+                    <h2>Setting Up Your Development Environment</h2>
+                    
+                    <p>
+                        Before we start coding, let's make sure we have the necessary tools installed:
+                    </p>
+                    
+                    <ol>
+                        <li>Node.js (v14 or later recommended)</li>
+                        <li>npm (comes with Node.js)</li>
+                        <li>MongoDB (local installation or MongoDB Atlas account)</li>
+                        <li>Postman (or any API testing tool)</li>
+                    </ol>
+                    
+                    <h2>Project Initialization</h2>
+                    
+                    <p>
+                        Let's start by creating a new project and installing the necessary dependencies:
+                    </p>
+                    
+                    <div class="code-block">
+                        <pre>
+mkdir node-rest-api
+cd node-rest-api
+npm init -y
+npm install express mongoose dotenv cors helmet morgan
+npm install nodemon --save-dev</pre>
+                    </div>
+                    
+                    <p>
+                        Here's what each of these packages does:
+                    </p>
+                    
+                    <ul>
+                        <li><strong>express</strong> - Web framework for Node.js</li>
+                        <li><strong>mongoose</strong> - MongoDB object modeling tool</li>
+                        <li><strong>dotenv</strong> - Loads environment variables from a .env file</li>
+                        <li><strong>cors</strong> - Enables Cross-Origin Resource Sharing</li>
+                        <li><strong>helmet</strong> - Helps secure Express apps by setting HTTP headers</li>
+                        <li><strong>morgan</strong> - HTTP request logger middleware</li>
+                        <li><strong>nodemon</strong> - Automatically restarts the server during development</li>
+                    </ul>
+                    
+                    <h2>Project Structure</h2>
+                    
+                    <p>
+                        A well-organized project structure is essential for maintainability. Here's a recommended structure for our REST API:
+                    </p>
+                    
+                    <div class="code-block">
+                        <pre>
+node-rest-api/
+├── config/            # Configuration files
+├── controllers/       # Request handlers
+├── middleware/        # Custom middleware
+├── models/            # Mongoose models
+├── routes/            # Route definitions
+├── utils/             # Utility functions
+├── .env               # Environment variables
+├── .gitignore         # Files to ignore in git
+├── app.js             # Express app setup
+├── server.js          # Server entry point
+└── package.json       # Project dependencies</pre>
+                    </div>
+                    
+                    <h2>Creating the Server</h2>
+                    
+                    <p>
+                        Let's start by setting up our Express server in <code>app.js</code>:
+                    </p>
+                    
+                    <div class="code-block">
+                        <pre>
+// app.js
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const helmet = require('helmet');
+const morgan = require('morgan');
+require('dotenv').config();
+
+// Initialize Express app
+const app = express();
+
+// Middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cors());
+app.use(helmet());
+app.use(morgan('dev'));
+
+// Routes
+app.use('/api/users', require('./routes/users'));
+app.use('/api/products', require('./routes/products'));
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({
+    success: false,
+    message: err.message || 'Something went wrong on the server'
+  });
+});
+
+module.exports = app;</pre>
+                    </div>
+                    
+                    <p>
+                        And now let's set up our <code>server.js</code> file to connect to MongoDB and start the server:
+                    </p>
+                    
+                    <div class="code-block">
+                        <pre>
+// server.js
+const mongoose = require('mongoose');
+const app = require('./app');
+require('dotenv').config();
+
+const PORT = process.env.PORT || 5000;
+const MONGODB_URI = process.env.MONGODB_URI;
+
+// Connect to MongoDB
+mongoose.connect(MONGODB_URI)
+  .then(() => {
+    console.log('Connected to MongoDB');
+    // Start the server
+    app.listen(PORT, () => {
+      console.log(`Server running on port ${PORT}`);
+    });
+  })
+  .catch(err => {
+    console.error('Failed to connect to MongoDB:', err);
+    process.exit(1);
+  });</pre>
+                    </div>
+                    
+                    <h2>Creating Models</h2>
+                    
+                    <p>
+                        Let's create a simple product model using Mongoose:
+                    </p>
+                    
+                    <div class="code-block">
+                        <pre>
+// models/product.js
+const mongoose = require('mongoose');
+
+const productSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: [true, 'Product name is required'],
+    trim: true,
+    maxlength: [100, 'Product name cannot exceed 100 characters']
+  },
+  description: {
+    type: String,
+    required: [true, 'Product description is required'],
+    trim: true
+  },
+  price: {
+    type: Number,
+    required: [true, 'Product price is required'],
+    min: [0, 'Price cannot be negative']
+  },
+  category: {
+    type: String,
+    required: [true, 'Product category is required'],
+    enum: {
+      values: ['electronics', 'books', 'clothing', 'food', 'other'],
+      message: '{VALUE} is not a valid category'
+    }
+  },
+  inStock: {
+    type: Boolean,
+    default: true
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now
+  }
+});
+
+module.exports = mongoose.model('Product', productSchema);</pre>
+                    </div>
+                    
+                    <h2>Implementing Controllers</h2>
+                    
+                    <p>
+                        Controllers handle the business logic of your application. Let's create a controller for our product resource:
+                    </p>
+                    
+                    <div class="code-block">
+                        <pre>
+// controllers/productController.js
+const Product = require('../models/product');
+
+// Get all products
+exports.getAllProducts = async (req, res) => {
+  try {
+    const products = await Product.find();
+    
+    res.status(200).json({
+      success: true,
+      count: products.length,
+      data: products
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message
+    });
+  }
+};
+
+// Get single product
+exports.getProductById = async (req, res) => {
+  try {
+    const product = await Product.findById(req.params.id);
+    
+    if (!product) {
+      return res.status(404).json({
+        success: false,
+        message: 'Product not found'
+      });
+    }
+    
+    res.status(200).json({
+      success: true,
+      data: product
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message
+    });
+  }
+};
+
+// Create new product
+exports.createProduct = async (req, res) => {
+  try {
+    const product = await Product.create(req.body);
+    
+    res.status(201).json({
+      success: true,
+      data: product
+    });
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      message: error.message
+    });
+  }
+};
+
+// Update product
+exports.updateProduct = async (req, res) => {
+  try {
+    const product = await Product.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { 
+        new: true, 
+        runValidators: true 
+      }
+    );
+    
+    if (!product) {
+      return res.status(404).json({
+        success: false,
+        message: 'Product not found'
+      });
+    }
+    
+    res.status(200).json({
+      success: true,
+      data: product
+    });
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      message: error.message
+    });
+  }
+};
+
+// Delete product
+exports.deleteProduct = async (req, res) => {
+  try {
+    const product = await Product.findByIdAndDelete(req.params.id);
+    
+    if (!product) {
+      return res.status(404).json({
+        success: false,
+        message: 'Product not found'
+      });
+    }
+    
+    res.status(200).json({
+      success: true,
+      message: 'Product deleted successfully'
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message
+    });
+  }
+};</pre>
+                    </div>
+                    
+                    <h2>Setting Up Routes</h2>
+                    
+                    <p>
+                        Now, let's define routes to connect our controllers to HTTP endpoints:
+                    </p>
+                    
+                    <div class="code-block">
+                        <pre>
+// routes/products.js
+const express = require('express');
+const router = express.Router();
+const { 
+  getAllProducts, 
+  getProductById, 
+  createProduct, 
+  updateProduct, 
+  deleteProduct 
+} = require('../controllers/productController');
+
+router.route('/')
+  .get(getAllProducts)
+  .post(createProduct);
+
+router.route('/:id')
+  .get(getProductById)
+  .put(updateProduct)
+  .delete(deleteProduct);
+
+module.exports = router;</pre>
+                    </div>
+                    
+                    <h2>Authentication and Authorization</h2>
+                    
+                    <p>
+                        Most APIs require authentication. Let's implement JSON Web Token (JWT) authentication:
+                    </p>
+                    
+                    <div class="code-block">
+                        <pre>
+// First, install jsonwebtoken
+// npm install jsonwebtoken bcryptjs
+
+// models/user.js
+const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+
+const userSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: [true, 'Please enter your name'],
+    trim: true,
+    maxlength: [50, 'Name cannot exceed 50 characters']
+  },
+  email: {
+    type: String,
+    required: [true, 'Please enter your email'],
+    unique: true,
+    match: [
+      /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+      'Please add a valid email'
+    ]
+  },
+  password: {
+    type: String,
+    required: [true, 'Please enter a password'],
+    minlength: [6, 'Password must be at least 6 characters'],
+    select: false
+  },
+  role: {
+    type: String,
+    enum: ['user', 'admin'],
+    default: 'user'
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now
+  }
+});
+
+// Hash password before saving
+userSchema.pre('save', async function(next) {
+  if (!this.isModified('password')) {
+    next();
+  }
+  
+  const salt = await bcrypt.genSalt(10);
+  this.password = await bcrypt.hash(this.password, salt);
+});
+
+// Sign JWT and return
+userSchema.methods.getSignedJwtToken = function() {
+  return jwt.sign(
+    { id: this._id },
+    process.env.JWT_SECRET,
+    { expiresIn: process.env.JWT_EXPIRE }
+  );
+};
+
+// Match password
+userSchema.methods.matchPassword = async function(enteredPassword) {
+  return await bcrypt.compare(enteredPassword, this.password);
+};
+
+module.exports = mongoose.model('User', userSchema);</pre>
+                    </div>
+                    
+                    <h2>Creating Authentication Middleware</h2>
+                    
+                    <p>
+                        Let's create middleware to protect routes that require authentication:
+                    </p>
+                    
+                    <div class="code-block">
+                        <pre>
+// middleware/auth.js
+const jwt = require('jsonwebtoken');
+const User = require('../models/user');
+
+exports.protect = async (req, res, next) => {
+  let token;
+  
+  if (
+    req.headers.authorization &&
+    req.headers.authorization.startsWith('Bearer')
+  ) {
+    // Extract token from Bearer token
+    token = req.headers.authorization.split(' ')[1];
+  }
+  
+  if (!token) {
+    return res.status(401).json({
+      success: false,
+      message: 'Not authorized to access this route'
+    });
+  }
+  
+  try {
+    // Verify token
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    
+    // Set user in request
+    req.user = await User.findById(decoded.id);
+    next();
+  } catch (error) {
+    return res.status(401).json({
+      success: false,
+      message: 'Not authorized to access this route'
+    });
+  }
+};
+
+// Grant access to specific roles
+exports.authorize = (...roles) => {
+  return (req, res, next) => {
+    if (!roles.includes(req.user.role)) {
+      return res.status(403).json({
+        success: false,
+        message: `User role '${req.user.role}' is not authorized to access this route`
+      });
+    }
+    next();
+  };
+};</pre>
+                    </div>
+                    
+                    <h2>Input Validation</h2>
+                    
+                    <p>
+                        Validating user input is crucial for API security. Let's use express-validator for this:
+                    </p>
+                    
+                    <div class="code-block">
+                        <pre>
+// npm install express-validator
+
+// middleware/validators.js
+const { body, validationResult } = require('express-validator');
+
+exports.validateProductInput = [
+  body('name')
+    .not().isEmpty().withMessage('Product name is required')
+    .trim()
+    .isLength({ max: 100 }).withMessage('Product name cannot exceed 100 characters'),
+  body('description')
+    .not().isEmpty().withMessage('Product description is required')
+    .trim(),
+  body('price')
+    .not().isEmpty().withMessage('Product price is required')
+    .isNumeric().withMessage('Price must be a number')
+    .custom(value => value >= 0).withMessage('Price cannot be negative'),
+  body('category')
+    .not().isEmpty().withMessage('Product category is required')
+    .isIn(['electronics', 'books', 'clothing', 'food', 'other'])
+    .withMessage('Category must be one of: electronics, books, clothing, food, other'),
+  
+  // Middleware to handle validation results
+  (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ 
+        success: false, 
+        errors: errors.array() 
+      });
+    }
+    next();
+  }
+];</pre>
+                    </div>
+                    
+                    <h2>Error Handling</h2>
+                    
+                    <p>
+                        Proper error handling improves the developer experience when using your API. Let's create a custom error handler:
+                    </p>
+                    
+                    <div class="code-block">
+                        <pre>
+// utils/errorResponse.js
+class ErrorResponse extends Error {
+  constructor(message, statusCode) {
+    super(message);
+    this.statusCode = statusCode;
+  }
+}
+
+module.exports = ErrorResponse;
+
+// middleware/errorHandler.js
+const ErrorResponse = require('../utils/errorResponse');
+
+const errorHandler = (err, req, res, next) => {
+  let error = { ...err };
+  error.message = err.message;
+  
+  // Log error
+  console.error(err.stack);
+  
+  // Mongoose bad ObjectId
+  if (err.name === 'CastError') {
+    const message = `Resource not found with id of ${err.value}`;
+    error = new ErrorResponse(message, 404);
+  }
+  
+  // Mongoose duplicate key
+  if (err.code === 11000) {
+    const message = 'Duplicate field value entered';
+    error = new ErrorResponse(message, 400);
+  }
+  
+  // Mongoose validation error
+  if (err.name === 'ValidationError') {
+    const message = Object.values(err.errors).map(val => val.message);
+    error = new ErrorResponse(message, 400);
+  }
+  
+  res.status(error.statusCode || 500).json({
+    success: false,
+    message: error.message || 'Server Error'
+  });
+};
+
+module.exports = errorHandler;</pre>
+                    </div>
+                    
+                    <h2>API Documentation</h2>
+                    
+                    <p>
+                        Well-documented APIs are easier to use. Let's set up Swagger for API documentation:
+                    </p>
+                    
+                    <div class="code-block">
+                        <pre>
+// npm install swagger-jsdoc swagger-ui-express
+
+// Add to app.js
+const swaggerJsdoc = require('swagger-jsdoc');
+const swaggerUi = require('swagger-ui-express');
+
+const swaggerOptions = {
+  definition: {
+    openapi: '3.0.0',
+    info: {
+      title: 'Node REST API',
+      version: '1.0.0',
+      description: 'A RESTful API built with Node.js and Express',
+    },
+    servers: [
+      {
+        url: `http://localhost:${process.env.PORT || 5000}`,
+        description: 'Development server',
+      },
+    ],
+  },
+  apis: ['./routes/*.js'],
+};
+
+const swaggerDocs = swaggerJsdoc(swaggerOptions);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));</pre>
+                    </div>
+                    
+                    <h2>Testing Your API</h2>
+                    
+                    <p>
+                        Testing is crucial for ensuring your API works correctly. Let's set up Jest and Supertest:
+                    </p>
+                    
+                    <div class="code-block">
+                        <pre>
+// npm install jest supertest cross-env --save-dev
+
+// Add to package.json
+"scripts": {
+  "start": "node server.js",
+  "dev": "nodemon server.js",
+  "test": "cross-env NODE_ENV=test jest --testTimeout=10000 --detectOpenHandles"
+}
+
+// tests/product.test.js
+const request = require('supertest');
+const mongoose = require('mongoose');
+const app = require('../app');
+const Product = require('../models/product');
+
+describe('Products API', () => {
+  beforeAll(async () => {
+    await mongoose.connect(process.env.MONGODB_URI_TEST);
+  });
+
+  afterAll(async () => {
+    await mongoose.connection.close();
+  });
+
+  beforeEach(async () => {
+    await Product.deleteMany({});
+  });
+
+  it('should create a new product', async () => {
+    const res = await request(app)
+      .post('/api/products')
+      .send({
+        name: 'Test Product',
+        description: 'Test Description',
+        price: 9.99,
+        category: 'electronics',
+      });
+    
+    expect(res.statusCode).toEqual(201);
+    expect(res.body.success).toBe(true);
+    expect(res.body.data.name).toBe('Test Product');
+  });
+});</pre>
+                    </div>
+                    
+                    <h2>Deployment</h2>
+                    
+                    <p>
+                        When you're ready to deploy your API, you have several options:
+                    </p>
+                    
+                    <ul>
+                        <li><strong>Heroku</strong> - Simple deployment with Git integration</li>
+                        <li><strong>DigitalOcean</strong> - More control with droplets or App Platform</li>
+                        <li><strong>AWS</strong> - Elastic Beanstalk for simpler deployment or EC2 for more control</li>
+                        <li><strong>Vercel</strong> or <strong>Netlify</strong> - Great for serverless functions</li>
+                    </ul>
+                    
+                    <h2>Conclusion</h2>
+                    
+                    <p>
+                        Building a REST API with Node.js and Express gives you a flexible and powerful foundation for your backend services. By following best practices for project structure, authentication, validation, error handling, and documentation, you can create robust APIs that are easy to use and maintain.
+                    </p>
+                    
+                    <p>
+                        As your API grows, consider incorporating additional features like rate limiting, caching, logging, and monitoring to improve performance and reliability. And don't forget to keep security as a top priority by regularly updating dependencies, implementing proper authentication and authorization, and validating all user inputs.
+                    </p>
+                </div>
+                
+                <div class="blog-post-tags">
+                    <span class="blog-post-tag">Node.js</span>
+                    <span class="blog-post-tag">Express</span>
+                    <span class="blog-post-tag">REST API</span>
+                    <span class="blog-post-tag">Backend</span>
+                    <span class="blog-post-tag">MongoDB</span>
+                </div>
+                
+                <div class="blog-post-navigation">
+                    <a href="optimizing-website-performance.html" class="blog-post-nav-link">
+                        <i class="fas fa-arrow-left"></i>
+                        Previous Post: Optimizing Website Performance
+                    </a>
+                    <a href="css-grid-layout.html" class="blog-post-nav-link">
+                        Next Post: Introduction to CSS Grid Layout
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <div class="blog-post-share">
+                    <h3 class="blog-post-share-title">Share This Post</h3>
+                    <div class="blog-post-share-links">
+                        <a href="#" class="blog-post-share-link">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="blog-post-share-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="blog-post-share-link">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="blog-post-share-link">
+                            <i class="fab fa-pinterest"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Posts -->
+    <section class="related-posts">
+        <div class="container">
+            <h2 class="related-posts-title">Related Posts</h2>
+            <div class="related-posts-grid">
+                <!-- Related Post 1 -->
+                <div class="blog-card">
+                    <div class="blog-card-img">
+                        <img src="../images/blog-3.jpg" alt="GraphQL Introduction">
+                    </div>
+                    <div class="blog-card-content">
+                        <div class="blog-card-meta">
+                            <span class="post-category">Tutorials</span>
+                            <span class="post-date">November 10, 2024</span>
+                        </div>
+                        <h3 class="blog-card-title">Introduction to GraphQL</h3>
+                        <p class="blog-card-excerpt">
+                            Learn how to use GraphQL to build more efficient and flexible APIs for your applications.
+                        </p>
+                        <a href="graphql-introduction.html" class="btn btn-text">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Related Post 2 -->
+                <div class="blog-card">
+                    <div class="blog-card-img">
+                        <img src="../images/blog-6.jpg" alt="Getting Started with Docker">
+                    </div>
+                    <div class="blog-card-content">
+                        <div class="blog-card-meta">
+                            <span class="post-category">Tutorials</span>
+                            <span class="post-date">December 5, 2024</span>
+                        </div>
+                        <h3 class="blog-card-title">Getting Started with Docker</h3>
+                        <p class="blog-card-excerpt">
+                            A beginner's guide to containerization with Docker for web development projects.
+                        </p>
+                        <a href="getting-started-docker.html" class="btn btn-text">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-wrapper">
+                <div class="footer-top">
+                    <div class="footer-logo">
+                        <a href="../index.html">Portfolio<span>.</span></a>
+                    </div>
+                    <div class="footer-social">
+                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-divider"></div>
+                <div class="footer-bottom">
+                    <div class="footer-copyright">
+                        &copy; <span id="currentYear"></span> Portfolio. All rights reserved.
+                    </div>
+                    <div class="footer-nav">
+                        <a href="../index.html" class="footer-nav-link">Home</a>
+                        <a href="../about.html" class="footer-nav-link">About</a>
+                        <a href="../skills.html" class="footer-nav-link">Skills</a>
+                        <a href="../projects.html" class="footer-nav-link">Projects</a>
+                        <a href="../blog.html" class="footer-nav-link">Blog</a>
+                        <a href="../contact.html" class="footer-nav-link">Contact</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../js/main.js"></script>
+</body>
+</html> 
