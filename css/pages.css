@@ -674,6 +674,8 @@
     position: relative;
     overflow: hidden;
     align-items: center;
+   margin: 0 5px; 
+
 }
 
 .projects-grid-wrapper {
@@ -811,7 +813,7 @@
     width: 100%;
     max-width: 900px;
     max-height: 90vh;
-    margin: 0 auto;
+    margin: 0 5px;
     padding: 0;
     display: flex;
     flex-direction: column;
@@ -847,7 +849,7 @@
     -webkit-backdrop-filter: var(--blur-sm);
     border: 1px solid var(--border-color);
     border-radius: var(--radius-lg);
-    margin: 20px;
+    margin: 5px;
     max-height: calc(90vh - 40px);
     overflow-y: auto;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
