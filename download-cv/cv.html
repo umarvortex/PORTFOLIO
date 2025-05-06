@@ -378,11 +378,282 @@
           color: #4CAF50;
           font-weight: bold;
         }
+
+        /* Loading Overlay */
+        .loading-overlay {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(255, 255, 255, 0.9);
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          z-index: 9999;
+          opacity: 0;
+          visibility: hidden;
+          transition: all 0.3s ease;
+        }
+
+        .loading-overlay.active {
+          opacity: 1;
+          visibility: visible;
+        }
+
+        .loading-spinner {
+          width: 80px;
+          height: 80px;
+          border: 6px solid #e0e0e0;
+          border-radius: 50%;
+          border-top: 6px solid #0066cc;
+          animation: spin 1s linear infinite;
+          margin-bottom: 20px;
+        }
+
+        .loading-message {
+          font-size: 18px;
+          font-weight: 500;
+          color: #0066cc;
+          text-align: center;
+          margin-top: 15px;
+        }
+
+        .success-message {
+          display: none;
+          font-size: 20px;
+          font-weight: 600;
+          color: #4CAF50;
+          text-align: center;
+          margin-top: 15px;
+        }
+
+        .success-icon {
+          width: 80px;
+          height: 80px;
+          background-color: #4CAF50;
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-bottom: 20px;
+          transform: scale(0);
+          transition: transform 0.3s ease;
+        }
+
+        .success-icon.show {
+          transform: scale(1);
+        }
+
+        .success-icon i {
+          font-size: 40px;
+          color: white;
+        }
+
+        @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+
+        /* CV Download Button Hover Effect */
+        .download-btn {
+          position: relative;
+          overflow: hidden;
+          transition: all 0.3s ease;
+        }
+
+        .download-btn:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 6px 20px rgba(0, 102, 204, 0.4);
+        }
+
+        .download-btn:active {
+          transform: translateY(0);
+          box-shadow: 0 4px 15px rgba(0, 102, 204, 0.3);
+        }
+
+        /* Pulse animation for button */
+        .pulse {
+          animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+          0% { box-shadow: 0 0 0 0 rgba(0, 102, 204, 0.7); }
+          70% { box-shadow: 0 0 0 10px rgba(0, 102, 204, 0); }
+          100% { box-shadow: 0 0 0 0 rgba(0, 102, 204, 0); }
+        }
+        
+        /* Keyboard shortcut hint */
+        .shortcut-hint {
+          position: absolute;
+          right: 10px;
+          bottom: -25px;
+          font-size: 12px;
+          color: #666;
+          background: rgba(255,255,255,0.8);
+          padding: 4px 8px;
+          border-radius: 4px;
+          box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+          opacity: 0;
+          transition: opacity 0.3s ease;
+        }
+        
+        .shortcut-hint kbd {
+          display: inline-block;
+          padding: 2px 4px;
+          font-size: 11px;
+          line-height: 1;
+          color: #444;
+          background-color: #f7f7f7;
+          border: 1px solid #ccc;
+          border-radius: 3px;
+          box-shadow: 0 1px 0 rgba(0,0,0,0.2);
+          margin: 0 2px;
+        }
+        
+        /* Print button */
+        .print-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          padding: 10px 20px;
+          background: #4CAF50;
+          color: white;
+          border: none;
+          border-radius: 8px;
+          font-weight: 500;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+          margin-left: 10px;
+        }
+        
+        .print-btn:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+        }
+        
+        /* Social share buttons */
+        .social-share {
+          display: flex;
+          gap: 10px;
+          margin-top: 15px;
+          justify-content: center;
+        }
+        
+        .social-btn {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: white;
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+        
+        .social-btn:hover {
+          transform: translateY(-3px);
+        }
+        
+        .social-btn.email {
+          background: #d44638;
+        }
+        
+        .social-btn.linkedin {
+          background: #0077b5;
+        }
+        
+        .social-btn.whatsapp {
+          background: #25D366;
+        }
+        
+        .social-share-container {
+          text-align: center;
+          margin-top: 30px;
+          padding-top: 20px;
+          border-top: 1px solid rgba(0,0,0,0.1);
+        }
+        
+        .share-text {
+          font-size: 14px;
+          color: #666;
+          margin-bottom: 10px;
+        }
+
+        /* Print styles */
+        @media print {
+          body * {
+            visibility: hidden;
+          }
+          
+          .cv-content, .cv-content * {
+            visibility: visible;
+            color: #000 !important;
+          }
+          
+          .cv-content {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            padding: 20mm;
+            margin: 0;
+            box-shadow: none;
+            background: white !important;
+            border-radius: 0;
+          }
+          
+          .header, .mobile-nav, .footer, .back-to-top, .page-header, 
+          .popup-message, .loading-overlay, .download-options, .social-share-container {
+            display: none !important;
+          }
+          
+          .item-title {
+            font-size: 18px !important;
+            color: #000 !important;
+          }
+          
+          .item-subtitle {
+            font-size: 16px !important;
+            color: #333 !important;
+          }
+          
+          .item-date {
+            color: #333 !important;
+            background: #f5f5f5 !important;
+          }
+          
+          .item-description {
+            font-size: 14px !important;
+            color: #333 !important;
+          }
+          
+          .skill-tag {
+            border: 1px solid #ddd !important;
+            color: #333 !important;
+            background: #f5f5f5 !important;
+          }
+          
+          .cv-section-header {
+            color: #000 !important;
+            border-bottom: 1px solid #000 !important;
+          }
+          
+          .education-item, .experience-item {
+            page-break-inside: avoid;
+            margin-bottom: 15mm !important;
+            border: 1px solid #eee !important;
+          }
+        }
       </style>
     
       <div class="cv-header">
         <h2>Curriculum Vitae</h2>
-        <button class="download-btn" id="downloadCvBtn">
+        <div class="download-options" style="position: relative; display: flex; align-items: center;">
+          <button class="download-btn pulse" id="downloadCvBtn">
           <i>⬇️</i> 
           <span class="btn-text">Download CV (PDF)</span>
           <span class="loading-text">
@@ -394,6 +665,13 @@
             </span>
           </span>
         </button>
+          <button class="print-btn" id="printCvBtn">
+            <i class="fas fa-print"></i> Print
+          </button>
+          <div class="shortcut-hint">
+            Press <kbd>Ctrl</kbd> + <kbd>D</kbd> to download
+          </div>
+        </div>
       </div>
     
       <div class="cv-content" id="cvContent">
@@ -529,6 +807,32 @@
         <div class="checkmark">✓</div>
         <span>Thank you</span>
       </div>
+
+      <!-- Loading Overlay -->
+      <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner" id="loadingSpinner"></div>
+        <div class="loading-message" id="loadingMessage">Generating PDF...</div>
+        <div class="success-icon" id="successIcon">
+          <i class="fas fa-check"></i>
+        </div>
+        <div class="success-message" id="successMessage">Thanks! PDF generated.</div>
+      </div>
+    
+      <!-- Social Share Options -->
+      <div class="social-share-container">
+        <div class="share-text">Share your CV with others</div>
+        <div class="social-share">
+          <div class="social-btn email" id="shareEmail">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <div class="social-btn linkedin" id="shareLinkedin">
+            <i class="fab fa-linkedin-in"></i>
+          </div>
+          <div class="social-btn whatsapp" id="shareWhatsapp">
+            <i class="fab fa-whatsapp"></i>
+          </div>
+        </div>
+      </div>
     
       <!-- JavaScript -->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -538,90 +842,478 @@
         const { jsPDF } = window.jspdf;
         const downloadBtn = document.getElementById('downloadCvBtn');
         const popupMessage = document.getElementById('popupMessage');
+        const loadingOverlay = document.getElementById('loadingOverlay');
+        const loadingSpinner = document.getElementById('loadingSpinner');
+        const loadingMessage = document.getElementById('loadingMessage');
+        const successIcon = document.getElementById('successIcon');
+        const successMessage = document.getElementById('successMessage');
         
         downloadBtn.addEventListener('click', async function() {
           try {
+            // Show loading overlay
+            loadingOverlay.classList.add('active');
+            
             // Show generating state
             downloadBtn.classList.add('generating');
             
-            // Scroll to button smoothly
-            downloadBtn.scrollIntoView({ 
-              behavior: 'smooth', 
-              block: 'center' 
-            });
+            // Get the original CV content for PDF generation
+            const cvContent = document.getElementById('cvContent');
             
-            // Create temporary container
+            // Show loading message
+            loadingMessage.textContent = "Preparing your CV...";
+            
+            // Create a temporary container to hold the CV content
             const tempContainer = document.createElement('div');
-            tempContainer.style.position = 'fixed';
-            tempContainer.style.left = '0';
-            tempContainer.style.top = '0';
-            tempContainer.style.width = '1000px';
-            tempContainer.style.padding = '40px';
-            tempContainer.style.background = '#ffffff';
-            tempContainer.style.zIndex = '9999';
+            tempContainer.innerHTML = cvContent.innerHTML;
             
-            // Clone and style CV content
-            const cvContent = document.getElementById('cvContent').cloneNode(true);
-            cvContent.style.background = '#ffffff';
-            cvContent.style.boxShadow = 'none';
-            tempContainer.appendChild(cvContent);
+            // Set up the temporary container for proper rendering
+            tempContainer.style.position = 'fixed';
+            tempContainer.style.top = '-9999px';
+            tempContainer.style.left = '-9999px';
+            tempContainer.style.width = '800px';
+            tempContainer.style.background = '#ffffff';
+            tempContainer.style.padding = '40px';
+            tempContainer.style.zIndex = '-1000';
+            tempContainer.style.fontFamily = "'Inter', Arial, sans-serif";
+            
+            // Enhance the content styling to ensure it renders properly
+            const styles = document.createElement('style');
+            styles.textContent = `
+              .item-title, .item-subtitle, .item-date, .item-description, .skill-tag, .contact-item {
+                color: #000 !important;
+                background-color: #fff !important;
+                font-family: Arial, sans-serif !important;
+                text-shadow: none !important;
+              }
+              .item-title {
+                font-size: 16px !important;
+                font-weight: bold !important;
+              }
+              .item-subtitle {
+                font-size: 14px !important;
+              }
+              .item-date {
+                font-size: 14px !important;
+              }
+              .item-description {
+                font-size: 13px !important;
+                line-height: 1.4 !important;
+              }
+              .cv-section-header {
+                font-size: 18px !important;
+                font-weight: bold !important;
+                color: #0066cc !important;
+                margin-bottom: 10px !important;
+              }
+              .education-item, .experience-item {
+                margin-bottom: 20px !important;
+                padding: 15px !important;
+                border: 1px solid #eee !important;
+              }
+              .skills-container {
+                display: flex !important;
+                flex-wrap: wrap !important;
+                gap: 5px !important;
+              }
+              .skill-tag {
+                display: inline-block !important;
+                padding: 3px 8px !important;
+                border-radius: 15px !important;
+                background-color: #f0f8ff !important;
+                border: 1px solid #0066cc !important;
+                font-size: 12px !important;
+              }
+              .contact-item {
+                margin-bottom: 8px !important;
+                font-size: 14px !important;
+              }
+              h1 {
+                font-size: 24px !important;
+                color: #000 !important;
+              }
+            `;
+            tempContainer.appendChild(styles);
+            
+            // Add a title at the top
+            const title = document.createElement('h1');
+            title.textContent = "Professional Curriculum Vitae";
+            title.style.textAlign = "center";
+            title.style.marginBottom = "20px";
+            title.style.color = "#0066cc";
+            title.style.fontWeight = "bold";
+            tempContainer.insertBefore(title, tempContainer.firstChild);
+            
+            // Add the container to the document for rendering
             document.body.appendChild(tempContainer);
             
-            // Generate PDF
+            // Generate PDF with better settings for visibility
             const canvas = await html2canvas(tempContainer, {
-              scale: 2,
-              logging: false,
-              useCORS: true,
-              backgroundColor: '#ffffff',
+              scale: 2, // Higher scale for better quality
+              logging: true, // Enable logging to see any errors
+              useCORS: true, // Allow cross-origin images
+              backgroundColor: '#ffffff', // White background
+              allowTaint: true, // Allow tainted canvas
               scrollX: 0,
-              scrollY: 0
+              scrollY: 0,
+              windowWidth: 1000,
+              width: 800,
+              height: tempContainer.scrollHeight,
+              onclone: function(clonedDoc, clonedElement) {
+                // This is called with the cloned document and element 
+                // We can use this to ensure everything is visible
+                clonedElement.style.transform = 'none';
+                clonedElement.style.display = 'block';
+                clonedElement.style.position = 'static';
+                clonedElement.style.width = '800px';
+                clonedElement.style.height = 'auto';
+                clonedElement.style.padding = '30px';
+                clonedElement.style.margin = '0';
+                clonedElement.style.fontFamily = 'Arial, sans-serif';
+                
+                // Make all text elements black for visibility
+                const textElements = clonedElement.querySelectorAll('p, h1, h2, h3, h4, div, span');
+                textElements.forEach(el => {
+                  el.style.color = '#000000';
+                  el.style.textShadow = 'none';
+                  el.style.fontFamily = 'Arial, sans-serif';
+                  el.style.visibility = 'visible';
+                  el.style.opacity = '1';
+                });
+              }
             });
             
             // Clean up
             document.body.removeChild(tempContainer);
             
-            // Create PDF document
-            const pdf = new jsPDF('p', 'mm', 'a4');
-            const imgWidth = 210;
-            const pageHeight = 295;
-            const imgHeight = canvas.height * imgWidth / canvas.width;
-            let heightLeft = imgHeight;
-            let position = 0;
+            // Convert canvas to high-quality image
+            const imgData = canvas.toDataURL('image/jpeg', 1.0);
             
-            pdf.addImage(canvas, 'PNG', 0, position, imgWidth, imgHeight);
-            heightLeft -= pageHeight;
+            // Create a new PDF with proper metadata
+            const pdf = new jsPDF({
+              orientation: 'portrait',
+              unit: 'mm',
+              format: 'a4',
+              compress: true,
+              putOnlyUsedFonts: true,
+              floatPrecision: 16,
+              title: 'Professional CV',
+              subject: 'Resume',
+              author: 'Portfolio Website',
+              keywords: 'cv, resume, professional',
+              creator: 'PDF Generator'
+            });
             
-            while (heightLeft >= 0) {
-              position = heightLeft - imgHeight;
+            // Add image to PDF with better quality settings
+            pdf.addImage(imgData, 'JPEG', 0, 0, 210, 297, undefined, 'FAST', 0);
+            
+            // If the content height requires multiple pages, set up pagination
+            if (canvas.height > 1684) { // A4 height at 96 DPI is about 1123 pixels
+              const totalPages = Math.ceil(canvas.height / 1684);
+              
+              for (let i=1; i < totalPages; i++) {
               pdf.addPage();
-              pdf.addImage(canvas, 'PNG', 0, position, imgWidth, imgHeight);
-              heightLeft -= pageHeight;
+                pdf.addImage(
+                  imgData, 
+                  'JPEG', 
+                  0, 
+                  -297 * i, 
+                  210, 
+                  297, 
+                  undefined, 
+                  'FAST', 
+                  0
+                );
+              }
             }
             
-            // Save PDF
-            pdf.save('Umar-CV.pdf');
+            // Save the PDF with a clean name
+            pdf.save('Professional_CV.pdf');
             
-            // Show success message
-            popupMessage.classList.add('show');
+            // Hide loading spinner and show success
+            loadingSpinner.style.display = 'none';
+            loadingMessage.style.display = 'none';
+            successIcon.style.display = 'flex';
+            successMessage.style.display = 'block';
+            
+            // Animate success icon
+            setTimeout(() => {
+              successIcon.classList.add('show');
+            }, 100);
             
             // Reset button state
             downloadBtn.classList.remove('generating');
             
-            // Hide message after 5 seconds
+            // Hide overlay after 5 seconds
             setTimeout(() => {
-              popupMessage.classList.remove('show');
-              popupMessage.classList.add('hide');
+              successIcon.classList.remove('show');
               
               setTimeout(() => {
-                popupMessage.classList.remove('hide');
-              }, 500);
+                loadingOverlay.classList.remove('active');
+                
+                // Reset overlay elements for next use
+                setTimeout(() => {
+                  loadingSpinner.style.display = 'block';
+                  loadingMessage.style.display = 'block';
+                  successIcon.style.display = 'none';
+                  successMessage.style.display = 'none';
+                }, 300);
+              }, 300);
             }, 5000);
             
           } catch (error) {
             console.error('PDF generation failed:', error);
+            
+            // Try fallback method with simple text
+            try {
+              loadingMessage.textContent = "Trying alternative method...";
+              
+              // Create a new PDF
+              const pdf = new jsPDF();
+              
+              // Get CV data
+              const name = cvContent.querySelector('.item-title').textContent;
+              const title = cvContent.querySelector('.item-subtitle').textContent;
+              
+              // Add content to PDF directly
+              pdf.setFontSize(22);
+              pdf.setTextColor(0, 102, 204);
+              pdf.text('Professional Curriculum Vitae', 105, 20, { align: 'center' });
+              
+              pdf.setFontSize(18);
+              pdf.text(name, 105, 35, { align: 'center' });
+              
+              pdf.setFontSize(14);
+              pdf.setTextColor(80, 80, 80);
+              pdf.text(title, 105, 45, { align: 'center' });
+              
+              pdf.setDrawColor(0, 102, 204);
+              pdf.line(20, 50, 190, 50);
+              
+              // Education section
+              pdf.setFontSize(16);
+              pdf.setTextColor(0, 102, 204);
+              pdf.text('Education', 20, 65);
+              
+              let yPos = 75;
+              const educationItems = cvContent.querySelectorAll('.education-item');
+              
+              educationItems.forEach(item => {
+                pdf.setFontSize(14);
+                pdf.setTextColor(0, 0, 0);
+                pdf.text(item.querySelector('.item-title').textContent, 20, yPos);
+                
+                pdf.setFontSize(12);
+                pdf.setTextColor(80, 80, 80);
+                pdf.text(item.querySelector('.item-subtitle').textContent, 20, yPos + 7);
+                pdf.text(item.querySelector('.item-date').textContent, 160, yPos + 7);
+                
+                pdf.setFontSize(11);
+                pdf.setTextColor(60, 60, 60);
+                pdf.text(item.querySelector('.item-description').textContent, 20, yPos + 15, { 
+                  maxWidth: 170 
+                });
+                
+                yPos += 35;
+              });
+              
+              // Work Experience section
+              pdf.setFontSize(16);
+              pdf.setTextColor(0, 102, 204);
+              pdf.text('Work Experience', 20, yPos);
+              
+              yPos += 10;
+              const experienceItems = cvContent.querySelectorAll('.experience-item');
+              
+              experienceItems.forEach(item => {
+                pdf.setFontSize(14);
+                pdf.setTextColor(0, 0, 0);
+                pdf.text(item.querySelector('.item-title').textContent, 20, yPos);
+                
+                pdf.setFontSize(12);
+                pdf.setTextColor(80, 80, 80);
+                pdf.text(item.querySelector('.item-subtitle').textContent, 20, yPos + 7);
+                pdf.text(item.querySelector('.item-date').textContent, 160, yPos + 7);
+                
+                pdf.setFontSize(11);
+                pdf.setTextColor(60, 60, 60);
+                pdf.text(item.querySelector('.item-description').textContent, 20, yPos + 15, { 
+                  maxWidth: 170 
+                });
+                
+                yPos += 35;
+              });
+              
+              // Skills section
+              pdf.setFontSize(16);
+              pdf.setTextColor(0, 102, 204);
+              pdf.text('Technical Skills', 20, yPos);
+              
+              yPos += 10;
+              const skills = Array.from(cvContent.querySelectorAll('.cv-section-header + div .skill-tag')).map(skill => skill.textContent);
+              
+              // Split skills into chunks to display as lines
+              const skillChunks = [];
+              let currentChunk = [];
+              let currentLineLength = 0;
+              
+              skills.forEach(skill => {
+                if (currentLineLength + skill.length > 50) {
+                  skillChunks.push(currentChunk.join(', '));
+                  currentChunk = [skill];
+                  currentLineLength = skill.length;
+                } else {
+                  currentChunk.push(skill);
+                  currentLineLength += skill.length + 2; // +2 for the comma and space
+                }
+              });
+              
+              if (currentChunk.length > 0) {
+                skillChunks.push(currentChunk.join(', '));
+              }
+              
+              // Add skills to PDF
+              pdf.setFontSize(11);
+              pdf.setTextColor(60, 60, 60);
+              
+              skillChunks.forEach(chunk => {
+                pdf.text(chunk, 20, yPos);
+                yPos += 7;
+              });
+              
+              // Contact section
+              yPos += 10;
+              pdf.setFontSize(16);
+              pdf.setTextColor(0, 102, 204);
+              pdf.text('Contact Information', 20, yPos);
+              
+              yPos += 10;
+              const contactItems = cvContent.querySelectorAll('.contact-item');
+              
+              contactItems.forEach(item => {
+                pdf.setFontSize(11);
+                pdf.setTextColor(60, 60, 60);
+                pdf.text(item.textContent.trim(), 20, yPos);
+                yPos += 7;
+              });
+              
+              // Add a footer
+              pdf.setFontSize(10);
+              pdf.setTextColor(150, 150, 150);
+              pdf.text('Generated from online portfolio', 105, 285, { align: 'center' });
+              
+              // Save the PDF
+              pdf.save('Simple_CV.pdf');
+              
+              // Reset button state and show success
             downloadBtn.classList.remove('generating');
-            alert('Failed to generate PDF. Please try again.');
+              
+              // Hide loading spinner and show success
+              loadingSpinner.style.display = 'none';
+              loadingMessage.style.display = 'none';
+              successIcon.style.display = 'flex';
+              successMessage.style.display = 'block';
+              successMessage.textContent = "PDF generated with basic layout";
+              
+              // Animate success icon
+              setTimeout(() => {
+                successIcon.classList.add('show');
+              }, 100);
+              
+              // Hide overlay after 5 seconds
+              setTimeout(() => {
+                successIcon.classList.remove('show');
+                
+                setTimeout(() => {
+                  loadingOverlay.classList.remove('active');
+                  
+                  // Reset overlay elements for next use
+                  setTimeout(() => {
+                    loadingSpinner.style.display = 'block';
+                    loadingMessage.style.display = 'block';
+                    successIcon.style.display = 'none';
+                    successMessage.style.display = 'none';
+                    successMessage.textContent = "Thanks! PDF generated.";
+                  }, 300);
+                }, 300);
+              }, 5000);
+              
+            } catch (fallbackError) {
+              console.error('Fallback PDF generation also failed:', fallbackError);
+              loadingOverlay.classList.remove('active');
+              downloadBtn.classList.remove('generating');
+              alert('Unable to generate PDF. Please try again later.');
+              
+              // Reset overlay elements
+              loadingSpinner.style.display = 'block';
+              loadingMessage.style.display = 'block';
+              successIcon.style.display = 'none';
+              successMessage.style.display = 'none';
+            }
           }
+        });
+        
+        // Allow clicking outside the overlay to dismiss it after success
+        loadingOverlay.addEventListener('click', function(e) {
+          // Only allow dismissing if we're in success state
+          if (successMessage.style.display === 'block') {
+            successIcon.classList.remove('show');
+            
+            setTimeout(() => {
+              loadingOverlay.classList.remove('active');
+              
+              // Reset overlay elements for next use
+              setTimeout(() => {
+                loadingSpinner.style.display = 'block';
+                loadingMessage.style.display = 'block';
+                successIcon.style.display = 'none';
+                successMessage.style.display = 'none';
+              }, 300);
+            }, 300);
+          }
+        });
+        
+        // Add keyboard shortcut support (Ctrl+D)
+        document.addEventListener('keydown', function(e) {
+          if ((e.ctrlKey || e.metaKey) && e.key === 'd') {
+            e.preventDefault();
+            downloadBtn.click();
+          }
+        });
+        
+        // Print functionality
+        const printBtn = document.getElementById('printCvBtn');
+        printBtn.addEventListener('click', function() {
+          window.print();
+        });
+        
+        // Social sharing functionality
+        document.getElementById('shareEmail').addEventListener('click', function() {
+          const subject = "My Professional CV";
+          const body = "Here is a link to my professional CV. Please take a look!";
+          window.location.href = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        });
+        
+        document.getElementById('shareLinkedin').addEventListener('click', function() {
+          const url = window.location.href;
+          const shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
+          window.open(shareUrl, '_blank');
+        });
+        
+        document.getElementById('shareWhatsapp').addEventListener('click', function() {
+          const text = "Check out my professional CV:";
+          const url = window.location.href;
+          const shareUrl = `https://wa.me/?text=${encodeURIComponent(text + ' ' + url)}`;
+          window.open(shareUrl, '_blank');
+        });
+        
+        // Show shortcut hint on button hover
+        const shortcutHint = document.querySelector('.shortcut-hint');
+        downloadBtn.addEventListener('mouseenter', function() {
+          shortcutHint.style.opacity = '1';
+        });
+        
+        downloadBtn.addEventListener('mouseleave', function() {
+          shortcutHint.style.opacity = '0';
         });
       </script>
     </section>
