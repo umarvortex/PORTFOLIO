@@ -2416,9 +2416,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .project-lightbox .lightbox-text {
-    text-align: justify;
+    text-align: left;
     padding-right: var(--space-sm);
 }
+
 
 .project-lightbox .lightbox-list li {
     padding-left: var(--space-xs);

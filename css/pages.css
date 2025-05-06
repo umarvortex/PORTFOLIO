@@ -674,8 +674,6 @@
     position: relative;
     overflow: hidden;
     align-items: center;
-   margin: 0 5px; 
-
 }
 
 .projects-grid-wrapper {
@@ -683,7 +681,7 @@
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     gap: var(--space-2xl);
     padding: var(--space-lg) 0; 
-    margin: 0 7px; 
+    margin: 0 5px; 
     max-width: calc(100% - 16px);
 }
 
@@ -779,6 +777,8 @@
     left: 0;
     width: 100%;
     height: 100%;
+    margin-right: 5px;
+    margin-left: 5px;
     z-index: var(--z-modal);
     pointer-events: none;
 }
@@ -814,7 +814,7 @@
     max-width: 900px;
     max-height: 90vh;
     margin: 0 5px;
-    padding: 0;
+    padding: 1px;
     display: flex;
     flex-direction: column;
 }
@@ -840,7 +840,6 @@
 
 .lightbox-close:hover {
     background-color: var(--primary-dark);
-    transform: scale(1.1);
 }
 
 .lightbox-content {
@@ -955,12 +954,7 @@
     transition: all 0.3s ease;
 }
 
-.lightbox-section:hover {
-    background-color: rgba(0, 0, 0, 0.1);
-    padding: var(--space-md);
-    margin-left: -var(--space-md);
-    margin-right: -var(--space-md);
-}
+
 
 .lightbox-section:last-child {
     margin-bottom: var(--space-lg);
@@ -990,6 +984,7 @@
     margin-bottom: var(--space-md);
     line-height: 1.4;
     text-align: left;
+    align-items: start;
 }
 
 .lightbox-list {
@@ -1084,12 +1079,7 @@
         max-width: 95%;
     }
     
-    .lightbox-section:hover {
-        background-color: transparent;
-        padding: 0 var(--space-md);
-        margin-left: 0;
-        margin-right: 0;
-    }
+ 
 }
 
 @media (max-width: 768px) {
@@ -1123,12 +1113,7 @@
         gap: var(--space-lg);
     }
     
-    .lightbox-section:hover {
-        background-color: transparent;
-        padding: 0;
-        margin-left: 0;
-        margin-right: 0;
-    }
+  
 }
 
 @media (max-width: 576px) {
