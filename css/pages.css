@@ -674,6 +674,7 @@
     position: relative;
     overflow: hidden;
     align-items: center;
+   
 }
 
 .projects-grid-wrapper {
@@ -681,7 +682,6 @@
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     gap: var(--space-2xl);
     padding: var(--space-lg) 0; 
-    margin: 0 5px; 
     max-width: calc(100% - 16px);
 }
 
@@ -1221,3 +1221,10 @@
         transform: translateX(3px);
     }
 } 
+
+
+svg {
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
