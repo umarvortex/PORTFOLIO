@@ -1,40 +1,43 @@
-/* =============== VARIABLES =============== */
 :root {
-    /* Colors */
-    --primary-color: #7d5fff;
-    --primary-light: #9f85ff;
-    --primary-dark: #6643e5;
-    --secondary-color: #00d2d3;
-    --accent-color: #ff7675;
+    /* ========== Colors ========== */
+    --primary-color: #6d28d9;       /* Deep Purple */
+    --primary-light: #8b5cf6;       /* Lighter Purple */
+    --primary-dark: #5b21b6;        /* Dark Purple */
+    --secondary-color: #059669;     /* Emerald Green */
+    --accent-color: #dc2626;        /* Vibrant Red */
+  
+    /* ========== Light Theme Backgrounds ========== */
+    --bg-primary: #f9fafb;          /* Off-White (Soft Gray) */
+    --bg-secondary: #ffffff;        /* Pure White (For Cards) */
+    --bg-tertiary: #f3f4f6;         /* Slightly Darker Gray */
+    --bg-card: rgba(190, 199, 193, 0.9); /* Semi-Transparent White */
     
-    /* Dark theme colors */
-    --bg-primary: #0d1117;
-    --bg-secondary: #161b22;
-    --bg-tertiary: #21262d;
-    --bg-card: rgba(30, 41, 59, 0.5);
-    --text-primary: #f8fafc;
-    --text-secondary: #cbd5e1;
-    --text-tertiary: #94a3b8;
-    --border-color: rgba(255, 255, 255, 0.08);
-    
-    /* Gradients */
-    --gradient-1: linear-gradient(to right, #7d5fff, #00d2d3);
-    --gradient-2: linear-gradient(to right, #ff7675, #fd79a8);
-    --gradient-3: linear-gradient(to right, #00d2d3, #2ecc71);
-    --gradient-4: linear-gradient(to right, #ff7675, #e84393);
-    
-    /* Shadows */
-    --shadow-sm: 0 2px 5px rgba(0, 0, 0, 0.1);
-    --shadow-md: 0 4px 10px rgba(0, 0, 0, 0.15);
-    --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.2);
-    --shadow-glow: 0 0 15px rgba(125, 95, 255, 0.5);
-    
-    /* Blur */
+    /* ========== Text Colors ========== */
+    --text-primary: #111827;        /* Almost Black */
+    --text-secondary: #4b5563;      /* Dark Gray */
+    --text-tertiary: #6b7280;       /* Medium Gray */
+  
+    /* ========== Borders & Lines ========== */
+    --border-color: rgba(0, 0, 0, 0.1); /* Light Black Opacity */
+  
+    /* ========== Gradients (Adjusted for Light Theme) ========== */
+    --gradient-1: linear-gradient(to right, #6d28d9, #059669); /* Purple to Green */
+    --gradient-2: linear-gradient(to right, #dc2626, #ec4899); /* Red to Pink */
+    --gradient-3: linear-gradient(to right, #059669, #06b6d4); /* Green to Cyan */
+    --gradient-4: linear-gradient(to right, #dc2626, #9333ea); /* Red to Purple */
+  
+    /* ========== Shadows (Lighter for Light Theme) ========== */
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+    --shadow-glow: 0 0 10px rgba(109, 40, 217, 0.3); /* Purple Glow */
+  
+    /* ========== Blur Effects ========== */
     --blur-sm: blur(5px);
     --blur-md: blur(10px);
     --blur-lg: blur(20px);
-    
-    /* Typography */
+  
+    /* ========== Typography (Same as Before) ========== */
     --font-primary: 'Poppins', sans-serif;
     --font-secondary: 'Inter', sans-serif;
     --font-size-xs: 0.75rem;
@@ -46,8 +49,8 @@
     --font-size-3xl: 1.875rem;
     --font-size-4xl: 2.25rem;
     --font-size-5xl: 3rem;
-    
-    /* Spacing */
+  
+    /* ========== Spacing (Same as Before) ========== */
     --space-xs: 0.25rem;
     --space-sm: 0.5rem;
     --space-md: 1rem;
@@ -56,21 +59,21 @@
     --space-2xl: 3rem;
     --space-3xl: 4rem;
     --space-4xl: 6rem;
-    
-    /* Border radius */
+  
+    /* ========== Border Radius (Same as Before) ========== */
     --radius-sm: 0.25rem;
     --radius-md: 0.5rem;
     --radius-lg: 1rem;
     --radius-xl: 1.5rem;
     --radius-2xl: 2rem;
     --radius-full: 9999px;
-    
-    /* Transitions */
+  
+    /* ========== Transitions (Same as Before) ========== */
     --transition-fast: 0.2s ease;
     --transition-normal: 0.3s ease;
     --transition-slow: 0.5s ease;
-    
-    /* Z-index */
+  
+    /* ========== Z-Index (Same as Before) ========== */
     --z-negative: -1;
     --z-elevate: 1;
     --z-dropdown: 10;
@@ -81,11 +84,11 @@
     --z-tooltip: 500;
     --z-toast: 600;
     --z-loader: 900;
-    
-    /* Container */
+  
+    /* ========== Container (Same as Before) ========== */
     --container-width: 1280px;
     --container-padding: 1.5rem;
-}
+  }
 
 /* Import page-specific styles */
 @import url('pages.css');
@@ -103,6 +106,7 @@ html {
     font-size: 16px;
     scroll-behavior: smooth;
 }
+
 
 body {
     font-family: var(--font-primary);
@@ -603,6 +607,7 @@ h1, h2, h3, h4, h5, h6 {
     opacity: 0;
     transform: translateY(20px);
     animation: fadeInUp 0.8s forwards 0.9s;
+
 }
 
 
@@ -620,14 +625,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hero-image-wrapper img {
-    border-radius: 40px 15px 40px 15px;
+    border-radius: 12px;
     filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
-    border-bottom: 2.5px solid #a085ff5e;
-    border-top: 2.5px solid #a085ff5e;
+    border-bottom: 4px solid #a085ff;
+    border-top: 4px solid #a085ff;
     transform: scaleY(0.01);
     transform-origin: center;
     opacity: 0;
-    animation: openFold 0.7s ease-out forwards;
+    animation: openFold 1s ease-out forwards;
 }
 
 
