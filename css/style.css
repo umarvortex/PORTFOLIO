@@ -624,20 +624,20 @@ h1, h2, h3, h4, h5, h6 {
     filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
     border-bottom: 2.5px solid #a085ff5e;
     border-top: 2.5px solid #a085ff5e;
-    transform: scaleY(0.02); /* patli line jesa start */
+    transform: scaleY(0.01);
     transform-origin: center;
     opacity: 0;
-    animation: openFold 1s ease-out forwards;
+    animation: openFold 0.7s ease-out forwards;
 }
 
-/* 📦 Animation */
+
 @keyframes openFold {
     0% {
-        transform: scaleY(0.02); /* start as line */
+        transform: scaleY(0.01); 
         opacity: 0;
     }
     100% {
-        transform: scaleY(1); /* full size */
+        transform: scaleY(1); 
         opacity: 1;
     }
 }
