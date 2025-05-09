@@ -399,11 +399,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .header.scrolled {
-    background-color: rgba(13, 17, 23, 0.8);
+    background-color: rgba(255, 255, 255, 0.95);  /* Changed to white with slight transparency */
     backdrop-filter: var(--blur-md);
     -webkit-backdrop-filter: var(--blur-md);
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 1px solid rgba(229, 231, 235, 0.5);  /* Lighter border color */
     padding: var(--space-sm) 0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);  /* Added subtle shadow */
 }
 
 .header-wrapper {
@@ -415,7 +416,7 @@ h1, h2, h3, h4, h5, h6 {
 .logo a {
     font-size: var(--font-size-xl);
     font-weight: 700;
-    color: var(--primary-color);
+    color: black;
 }
 
 .logo span {
@@ -1217,6 +1218,7 @@ h1, h2, h3, h4, h5, h6 {
 .footer {
     padding: var(--space-3xl) 0;
     border-top: 1px solid var(--border-color);
+    background-color: #151b2b;
 }
 
 .footer-wrapper {
@@ -1236,7 +1238,7 @@ h1, h2, h3, h4, h5, h6 {
 .footer-logo a {
     font-size: var(--font-size-2xl);
     font-weight: 700;
-    color: var(--text-primary);
+    color: white;
 }
 
 .footer-logo span {
