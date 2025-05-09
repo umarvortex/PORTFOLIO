@@ -10,7 +10,7 @@
     --bg-primary: #f9fafb;          /* Off-White (Soft Gray) */
     --bg-secondary: #ffffff;        /* Pure White (For Cards) */
     --bg-tertiary: #f3f4f6;         /* Slightly Darker Gray */
-    --bg-card: rgba(190, 199, 193, 0.9); /* Semi-Transparent White */
+    --bg-card: #dbe9f415; /* Semi-Transparent White */
     
     /* ========== Text Colors ========== */
     --text-primary: #111827;        /* Almost Black */
@@ -399,7 +399,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .header.scrolled {
-    background-color: rgba(224, 202, 202, 0.993);  /* Changed to white with slight transparency */
+    background-color: #ffffff15;  /* Changed to white with slight transparency */
     backdrop-filter: var(--blur-md);
     -webkit-backdrop-filter: var(--blur-md);
     border-bottom: 1px solid rgba(203, 205, 209, 0.911);  /* Lighter border color */
