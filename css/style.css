@@ -10,7 +10,7 @@
     --bg-primary: #f9fafb;          /* Off-White (Soft Gray) */
     --bg-secondary: #ffffff;        /* Pure White (For Cards) */
     --bg-tertiary: #f3f4f6;         /* Slightly Darker Gray */
-    --bg-card: #f0f8ff; /* Semi-Transparent White */
+    --bg-card: rgba(190, 199, 193, 0.9); /* Semi-Transparent White */
     
     /* ========== Text Colors ========== */
     --text-primary: #111827;        /* Almost Black */
@@ -399,12 +399,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .header.scrolled {
-    background-color: rgba(255, 255, 255, 0.95);  /* Changed to white with slight transparency */
+    background-color: rgba(224, 202, 202, 0.993);  /* Changed to white with slight transparency */
     backdrop-filter: var(--blur-md);
     -webkit-backdrop-filter: var(--blur-md);
-    border-bottom: 1px solid rgba(229, 231, 235, 0.5);  /* Lighter border color */
+    border-bottom: 1px solid rgba(203, 205, 209, 0.911);  /* Lighter border color */
     padding: var(--space-sm) 0;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);  /* Added subtle shadow */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.270), 0 2px 4px -1px rgba(0, 0, 0, 0.270);  /* Added subtle shadow */
 }
 
 .header-wrapper {
@@ -416,7 +416,7 @@ h1, h2, h3, h4, h5, h6 {
 .logo a {
     font-size: var(--font-size-xl);
     font-weight: 700;
-    color: black;
+    color: var(--primary-color);
 }
 
 .logo span {
@@ -465,7 +465,7 @@ h1, h2, h3, h4, h5, h6 {
     width: 24px;
     height: 18px;
     cursor: pointer;
-    z-index: 999999;
+    z-index: var(--z-sticky);
     margin-left: var(--space-md);
 }
 
@@ -496,7 +496,7 @@ h1, h2, h3, h4, h5, h6 {
     width: 300px;
     height: 100%;
     background-color: var(--bg-secondary);
-    z-index: 99999;
+    z-index: var(--z-drawer);
     padding: var(--space-3xl) var(--space-lg);
     transition: right var(--transition-normal);
     box-shadow: var(--shadow-lg);
@@ -633,9 +633,10 @@ h1, h2, h3, h4, h5, h6 {
     transform: scaleY(0.01);
     transform-origin: center;
     opacity: 0;
-    animation: openFold 1s ease-out forward;
+    animation: openFold 1s ease-out forwards;
+    animation-delay: 1s;
+    animation-play-state: inherit;
 }
-
 
 @keyframes openFold {
     0% {
@@ -1218,7 +1219,7 @@ h1, h2, h3, h4, h5, h6 {
 .footer {
     padding: var(--space-3xl) 0;
     border-top: 1px solid var(--border-color);
-    background-color: #151b2b;
+    background-color: #1c1c20;
 }
 
 .footer-wrapper {
@@ -1238,11 +1239,11 @@ h1, h2, h3, h4, h5, h6 {
 .footer-logo a {
     font-size: var(--font-size-2xl);
     font-weight: 700;
-    color: white;
+    color: var(--primary-light);
 }
 
 .footer-logo span {
-    color: var(--primary-color);
+    color: var(--text-color);
 }
 
 .footer-social {
@@ -1256,9 +1257,9 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--bg-tertiary);
+    background-color: var(--primary-light);
     border-radius: var(--radius-full);
-    color: var(--text-tertiary);
+    color: var(--bg-primary);
     transition: all var(--transition-fast);
     margin-right: var(--space-xs);
 }
@@ -1272,7 +1273,7 @@ h1, h2, h3, h4, h5, h6 {
 .footer-divider {
     width: 100%;
     height: 1px;
-    background-color: var(--border-color);
+    background-color: #4b556370;
     margin: var(--space-lg) 0;
 }
 
@@ -1285,7 +1286,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .footer-copyright {
-    color: var(--text-tertiary);
+    color: #a9b0b9;
     font-size: var(--font-size-sm);
 }
 
@@ -1295,7 +1296,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .footer-nav-link {
-    color: var(--text-tertiary);
+    color: #a9b0b9;;
     font-size: var(--font-size-sm);
 }
 
@@ -2011,8 +2012,8 @@ h1, h2, h3, h4, h5, h6 {
     height: auto;
     border-radius: 15px 15px 15px 15px;
     filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
-    border-top: 3px solid #a085ff5e;
-    border-bottom: 3px solid #a085ff5e;
+    border-top: 3px solid #8971e0;
+    border-bottom: 3px solid #8971e0;
     display: block;
     margin: 0 auto;
 }
