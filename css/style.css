@@ -633,8 +633,7 @@ h1, h2, h3, h4, h5, h6 {
     transform: scaleY(0.01);
     transform-origin: center;
     opacity: 0;
-    animation: openFold 1s ease-out forwards;
-    animation: delay 2s;
+    animation: openFold 1s ease-out forward;
 }
 
 
