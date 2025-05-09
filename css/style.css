@@ -10,7 +10,7 @@
     --bg-primary: #f9fafb;          /* Off-White (Soft Gray) */
     --bg-secondary: #ffffff;        /* Pure White (For Cards) */
     --bg-tertiary: #f3f4f6;         /* Slightly Darker Gray */
-    --bg-card: rgba(190, 199, 193, 0.9); /* Semi-Transparent White */
+    --bg-card: #f0f8ff; /* Semi-Transparent White */
     
     /* ========== Text Colors ========== */
     --text-primary: #111827;        /* Almost Black */
