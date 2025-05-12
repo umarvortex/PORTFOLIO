@@ -681,3 +681,50 @@ function initBlogPagination() {
         }
     });
 } 
+
+
+ // desktop hire button
+
+const hireButton = document.getElementById('hireButton');
+
+// Set delays for each menu item
+document.querySelectorAll('.menu-item').forEach((item, index) => {
+  item.style.setProperty('--i', index);
+});
+
+hireButton.addEventListener('click', function(e) {
+  e.preventDefault();
+  e.stopPropagation();
+  this.classList.toggle('active');
+});
+
+// Close when clicking outside
+document.addEventListener('click', function(e) {
+  if (!hireButton.contains(e.target) && 
+      !document.querySelector('.half-circle-menu').contains(e.target)) {
+    hireButton.classList.remove('active');
+  }
+});
+
+
+ // mobile navbar hirebutton
+
+// Modified JavaScript for both desktop and mobile
+document.addEventListener('DOMContentLoaded', function() {
+  // Handle both desktop and mobile hire buttons
+  document.addEventListener('click', function(e) {
+    const hireBtn = e.target.closest('#hireButton');
+    if (hireBtn) {
+      e.preventDefault();
+      e.stopPropagation();
+      hireBtn.classList.toggle('active');
+    }
+    
+    // Close when clicking outside
+    if (!e.target.closest('#hireButton') && !e.target.closest('.half-circle-menu')) {
+      document.querySelectorAll('#hireButton').forEach(btn => {
+        btn.classList.remove('active');
+      });
+    }
+  });
+});
