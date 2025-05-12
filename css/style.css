@@ -2719,6 +2719,7 @@ code {
 .hire-container {
   max-width: 690px;
   margin: 0 auto;
+  margin-left: 5rem;
   position: relative;
   display: flex;
   flex-direction: column;
