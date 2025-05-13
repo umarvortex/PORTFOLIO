@@ -2836,17 +2836,20 @@ code {
 
 
 
+
+
+
 /* Main container - works for both desktop and mobile */
 .hire-container {
   position: relative;
-  display: inline-block; /* Changed from flex to inline-block */
-  margin: 0 0 0 5rem; /* Only left margin */
+  display: inline-block; 
+  margin: 0 0 0 5rem; 
   z-index: 1000;
 }
 
 /* Base button style - consistent for both */
 .hire-btn {
-  width: 150px; /* Fixed width instead of 100% */
+  width: 150px; 
   height: 50px;
   padding: 15px 25px;
   background: var(--primary-color);
@@ -2916,20 +2919,20 @@ code {
 .whatsapp { 
   background-color: #25D366;
   left: 22px;
-  bottom: 15px;
+  bottom: 35px;
 }
 
 .phone { 
   background-color: #06b6d4;
   left: 50%;
   transform: translateX(-50%) translateY(40px);
-  bottom: 5px;
+  bottom: 20px;
 }
 
 .contact {
   background-color: #8a2be2;
   right: 22px;
-  bottom: 15px;
+  bottom: 35px;
 }
 
 /* Active states */
@@ -2950,21 +2953,62 @@ code {
   transform: rotate(92deg);
 }
 
-/* Mobile nav specific adjustments */
+
 .mobile-nav .hire-container {
-  margin: 2rem auto; /* Centered in mobile nav */
-  width: 150px; /* Match button width */
+  margin: 0.5rem auto; 
+  width: 150px; 
 }
 
 .mobile-nav .half-circle-menu {
-  top: calc(100% + 10px); /* Slightly more space in mobile */
-}
-
-/* Hover effects for both */
-.menu-item:hover {
-  transform: translateY(-5px) scale(1.1) !important;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  z-index: 1002;
+  top: calc(100% + 10px); 
 }
 
 
+
+
+/* Flip Animation Styles */
+.mobile-nav {
+  transform-origin: left center;
+  backface-visibility: hidden;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s;
+}
+
+/* Hint Message Styles */
+.hint-message {
+  position: fixed;
+  bottom: 30px;
+  left: 10px;
+  background: rgba(28, 39, 63, 0.9);
+  color: #a8b8ce;
+  padding: 12px 16px;
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transform: translateX(-120%);
+  transition: transform 0.4s ease-out;
+  z-index: 9999;
+}
+
+.hint-message svg {
+  width: 18px;
+  height: 18px;
+  animation: bounceRight 1.5s infinite;
+}
+
+.hint-message.show {
+  transform: translateX(0);
+}
+
+@keyframes bounceRight {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(5px); }
+}
+
+/* Mobile Nav Active State */
+.mobile-nav.active {
+  transform: perspective(1000px) rotateY(0deg) !important;
+  opacity: 1 !important;
+}
