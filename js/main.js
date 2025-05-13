@@ -728,3 +728,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 });
+
+// Toggle mobile nav from left side
+document.getElementById('mobileMenuButton').addEventListener('click', function() {
+    document.querySelector('.mobile-nav').classList.toggle('active');
+    
+    // Optional: Prevent body scroll when nav is open
+    document.body.style.overflow = document.querySelector('.mobile-nav').classList.contains('active') ? 'hidden' : '';
+});
