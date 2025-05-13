@@ -736,3 +736,98 @@ document.getElementById('mobileMenuButton').addEventListener('click', function()
     // Optional: Prevent body scroll when nav is open
     document.body.style.overflow = document.querySelector('.mobile-nav').classList.contains('active') ? 'hidden' : '';
 });
+
+
+
+// Mobile Nav Swipe and Flip Animation
+document.addEventListener('DOMContentLoaded', function() {
+  const mobileNav = document.querySelector('.mobile-nav');
+  const hintMessage = document.createElement('div');
+  let touchStartX = 0;
+  let touchEndX = 0;
+  let hintTimeout;
+
+  // Create hint message
+  hintMessage.innerHTML = `
+    <div class="hint-message">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+      </svg>
+      <span>Swipe from left to open menu</span>
+    </div>
+  `;
+  document.body.appendChild(hintMessage);
+
+  // Show hint only on first visit (using sessionStorage)
+  if (!sessionStorage.getItem('navHintShown')) {
+    setTimeout(() => {
+      hintMessage.classList.add('show');
+      sessionStorage.setItem('navHintShown', 'true');
+      
+      // Auto hide after 3 seconds
+      hintTimeout = setTimeout(() => {
+        hintMessage.classList.remove('show');
+      }, 3000);
+    }, 1000);
+  }
+
+  // Touch events for swipe detection
+  document.addEventListener('touchstart', function(e) {
+    touchStartX = e.changedTouches[0].screenX;
+  }, {passive: true});
+
+  document.addEventListener('touchend', function(e) {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+  }, {passive: true});
+
+  function handleSwipe() {
+    // Swipe right (from left edge)
+    if (touchStartX < 50 && touchEndX - touchStartX > 100) {
+      toggleNav(true);
+    }
+    // Swipe left to close
+    else if (mobileNav.classList.contains('active') && touchStartX - touchEndX > 100) {
+      toggleNav(false);
+    }
+  }
+
+  // Flip animation function
+  function toggleNav(show) {
+    if (show) {
+      mobileNav.style.transform = 'perspective(1000px) rotateY(-90deg)';
+      mobileNav.style.opacity = '0';
+      mobileNav.style.display = 'block';
+      
+      setTimeout(() => {
+        mobileNav.style.transition = 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s';
+        mobileNav.style.transform = 'perspective(1000px) rotateY(0deg)';
+        mobileNav.style.opacity = '1';
+        mobileNav.classList.add('active');
+      }, 10);
+    } else {
+      mobileNav.style.transition = 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s 0.2s';
+      mobileNav.style.transform = 'perspective(1000px) rotateY(90deg)';
+      mobileNav.style.opacity = '0';
+      
+      setTimeout(() => {
+        mobileNav.classList.remove('active');
+      }, 600);
+    }
+  }
+
+  // Close hint message on click
+  hintMessage.addEventListener('click', () => {
+    hintMessage.classList.remove('show');
+    clearTimeout(hintTimeout);
+  });
+
+  // Handle hire button separately
+  document.addEventListener('click', function(e) {
+    if (e.target.closest('#hireButton')) {
+      e.preventDefault();
+      e.stopPropagation();
+      e.target.closest('#hireButton').classList.toggle('active');
+    }
+  });
+});
