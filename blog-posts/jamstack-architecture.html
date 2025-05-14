@@ -6,16 +6,26 @@
     <title>The Rise of JAMstack Architecture | Portfolio</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/pages.css">
+     <link rel="stylesheet" href="../css/blogs.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Blog Post Styles */
+           /* Blog Post Styles */
         .blog-post-container {
             max-width: 800px;
             margin: 0 auto;
             padding: 3rem 1rem;
+        }
+        
+
+        pre {
+            color: #252629;
+        }
+
+        code {
+           color: #252525;
         }
         
         .blog-post-header {
@@ -174,7 +184,7 @@
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background: var(--bg-light);
+            background: rgba(110, 109, 110, 0.349);
             color: var(--text-medium);
             text-decoration: none;
             transition: all 0.3s;
@@ -205,123 +215,36 @@
             gap: 2rem;
         }
         
-        .jam-diagram {
+        .grid-demo {
             background-color: #f8f9fa;
-            padding: 2rem;
-            border-radius: 10px;
-            margin: 2rem 0;
-            text-align: center;
-        }
-        
-        .jam-diagram img {
-            max-width: 100%;
-            height: auto;
-            margin-bottom: 1rem;
-        }
-        
-        .jam-architecture {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-        
-        .jam-component {
-            flex: 1;
-            min-width: 200px;
-            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-            color: white;
             padding: 1.5rem;
             border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-        
-        .jam-component:hover {
-            transform: translateY(-5px);
-        }
-        
-        .jam-component h3 {
-            margin-top: 0;
-            color: white;
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .jam-component i {
-            font-size: 1.5rem;
-        }
-        
-        .table-container {
-            overflow-x: auto;
             margin: 2rem 0;
+            overflow: hidden;
         }
-        
-        .comparison-table {
-            width: 100%;
-            border-collapse: collapse;
-            border: 1px solid var(--border-color);
-        }
-        
-        .comparison-table th, 
-        .comparison-table td {
-            padding: 1rem;
-            text-align: left;
-            border: 1px solid var(--border-color);
-        }
-        
-        .comparison-table th {
-            background-color: #f8f9fa;
-            font-weight: 600;
-        }
-        
-        .comparison-table tbody tr:nth-child(even) {
-            background-color: #f8f9fa;
-        }
-        
-        .tool-grid {
+
+        .grid-example {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 1rem;
-            margin: 2rem 0;
+            gap: 10px;
+            background-color: #ffffff;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
         }
-        
-        .tool-card {
-            background-color: #f8f9fa;
-            border-radius: 8px;
-            padding: 1.5rem;
-            text-align: center;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+
+        .grid-item {
+            background-color: #6c63ff;
+            color: white;
+            padding: 20px;
+            border-radius: 4px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
         }
-        
-        .tool-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .tool-card img {
-            max-width: 80px;
-            height: auto;
-            margin-bottom: 1rem;
-        }
-        
-        .tool-card h4 {
-            margin: 0 0 0.5rem;
-            font-size: 1.1rem;
-        }
-        
-        .tool-card p {
-            font-size: 0.9rem;
-            margin: 0;
-            color: var(--text-light);
-        }
-        
-        .code-block {
+
+        .css-code {
+            display: block;
             background: #282c34;
             color: #abb2bf;
             border-radius: 8px;
@@ -349,14 +272,6 @@
             
             .related-posts-grid {
                 grid-template-columns: 1fr;
-            }
-            
-            .jam-architecture {
-                flex-direction: column;
-            }
-            
-            .tool-grid {
-                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
             }
         }
     </style>
@@ -805,7 +720,7 @@ export const pageQuery = graphql`
             <h2 class="related-posts-title">Related Posts</h2>
             <div class="related-posts-grid">
                 <!-- Related Post 1 -->
-                <div class="blog-card">
+                <div class="related-blog-card">
                     <div class="blog-card-img">
                         <img src="../images/blog-4.jpg" alt="The Future of Frontend Frameworks">
                     </div>
@@ -823,7 +738,7 @@ export const pageQuery = graphql`
                 </div>
                 
                 <!-- Related Post 2 -->
-                <div class="blog-card">
+               <div class="related-blog-card">
                     <div class="blog-card-img">
                         <img src="../images/blog-4.jpg" alt="AI in Web Development: Practical Applications">
                     </div>

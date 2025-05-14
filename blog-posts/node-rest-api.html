@@ -6,20 +6,26 @@
     <title>Building a REST API with Node.js | Portfolio</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/pages.css">
+     <link rel="stylesheet" href="../css/blogs.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Blog Post Styles */
+          /* Blog Post Styles */
         .blog-post-container {
             max-width: 800px;
             margin: 0 auto;
             padding: 3rem 1rem;
         }
         
+
+        pre {
+            color: #252629;
+        }
+
         code {
-           color: #333333;
+           color: #252525;
         }
         
         .blog-post-header {
@@ -178,7 +184,7 @@
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background: var(--bg-light);
+            background: rgba(110, 109, 110, 0.349);
             color: var(--text-medium);
             text-decoration: none;
             transition: all 0.3s;
@@ -209,7 +215,36 @@
             gap: 2rem;
         }
         
-        .code-block {
+        .grid-demo {
+            background-color: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            overflow: hidden;
+        }
+
+        .grid-example {
+            display: grid;
+            gap: 10px;
+            background-color: #ffffff;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .grid-item {
+            background-color: #6c63ff;
+            color: white;
+            padding: 20px;
+            border-radius: 4px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+        }
+
+        .css-code {
+            display: block;
             background: #282c34;
             color: #abb2bf;
             border-radius: 8px;
@@ -1112,7 +1147,7 @@ describe('Products API', () => {
             <h2 class="related-posts-title">Related Posts</h2>
             <div class="related-posts-grid">
                 <!-- Related Post 1 -->
-                <div class="blog-card">
+               <div class="related-blog-card">
                     <div class="blog-card-img">
                         <img src="../images/blog-3.jpg" alt="GraphQL Introduction">
                     </div>
@@ -1130,7 +1165,7 @@ describe('Products API', () => {
                 </div>
                 
                 <!-- Related Post 2 -->
-                <div class="blog-card">
+               <div class="related-blog-card"> 
                     <div class="blog-card-img">
                         <img src="../images/blog-6.jpg" alt="Getting Started with Docker">
                     </div>
