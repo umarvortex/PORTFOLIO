@@ -729,19 +729,19 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-// Toggle mobile nav from left side
-document.getElementById('mobileMenuButton').addEventListener('click', function() {
-    document.querySelector('.mobile-nav').classList.toggle('active');
-    
-    // Optional: Prevent body scroll when nav is open
-    document.body.style.overflow = document.querySelector('.mobile-nav').classList.contains('active') ? 'hidden' : '';
-});
 
 
 
-// Mobile Nav Swipe and Flip Animation
+
+
+
+
+
+
+// Combined Mobile Nav Functionality
 document.addEventListener('DOMContentLoaded', function() {
   const mobileNav = document.querySelector('.mobile-nav');
+  const mobileMenuButton = document.getElementById('mobileMenuButton');
   const hintMessage = document.createElement('div');
   let touchStartX = 0;
   let touchEndX = 0;
@@ -758,17 +758,23 @@ document.addEventListener('DOMContentLoaded', function() {
   `;
   document.body.appendChild(hintMessage);
 
-  // Show hint only on first visit (using sessionStorage)
+  // Show hint only on first visit
   if (!sessionStorage.getItem('navHintShown')) {
     setTimeout(() => {
       hintMessage.classList.add('show');
       sessionStorage.setItem('navHintShown', 'true');
       
-      // Auto hide after 3 seconds
       hintTimeout = setTimeout(() => {
         hintMessage.classList.remove('show');
       }, 3000);
     }, 1000);
+  }
+
+  // Handle hamburger menu click
+  if (mobileMenuButton) {
+    mobileMenuButton.addEventListener('click', function() {
+      toggleNav(!mobileNav.classList.contains('active'));
+    });
   }
 
   // Touch events for swipe detection
@@ -782,47 +788,50 @@ document.addEventListener('DOMContentLoaded', function() {
   }, {passive: true});
 
   function handleSwipe() {
-    // Swipe right (from left edge)
+    // Only allow swipe open from very left edge (first 50px)
     if (touchStartX < 50 && touchEndX - touchStartX > 100) {
       toggleNav(true);
     }
-    // Swipe left to close
+    // Allow swipe close from anywhere when nav is open
     else if (mobileNav.classList.contains('active') && touchStartX - touchEndX > 100) {
       toggleNav(false);
     }
   }
 
-  // Flip animation function
+  // Toggle nav function
   function toggleNav(show) {
     if (show) {
-      mobileNav.style.transform = 'perspective(1000px) rotateY(-90deg)';
-      mobileNav.style.opacity = '0';
+      // Open nav
       mobileNav.style.display = 'block';
+      document.body.style.overflow = 'hidden';
       
-      setTimeout(() => {
-        mobileNav.style.transition = 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s';
-        mobileNav.style.transform = 'perspective(1000px) rotateY(0deg)';
-        mobileNav.style.opacity = '1';
-        mobileNav.classList.add('active');
-      }, 10);
+      // Trigger reflow before animation
+      void mobileNav.offsetWidth;
+      
+      mobileNav.style.transition = 'transform 0.4s ease-out, opacity 0.3s';
+      mobileNav.style.transform = 'translateX(0)';
+      mobileNav.style.opacity = '1';
+      mobileNav.classList.add('active');
     } else {
-      mobileNav.style.transition = 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s 0.2s';
-      mobileNav.style.transform = 'perspective(1000px) rotateY(90deg)';
+      // Close nav
+      mobileNav.style.transition = 'transform 0.3s ease-in, opacity 0.2s';
+      mobileNav.style.transform = 'translateX(-100%)';
       mobileNav.style.opacity = '0';
+      document.body.style.overflow = '';
       
       setTimeout(() => {
         mobileNav.classList.remove('active');
-      }, 600);
+      }, 300);
     }
   }
 
-  // Close hint message on click
+  // Close hint message
   hintMessage.addEventListener('click', () => {
     hintMessage.classList.remove('show');
     clearTimeout(hintTimeout);
   });
 
-  // Handle hire button separately
+  // Handle hire button
   document.addEventListener('click', function(e) {
     if (e.target.closest('#hireButton')) {
       e.preventDefault();
